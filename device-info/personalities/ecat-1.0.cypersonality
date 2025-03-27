@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--****************************************************************************
+* \file ecat-1.0.cypersonality
+* \version 1.0
+*
+* \brief
+* ECAT personality description file.
+*
+********************************************************************************
+* \copyright
+* Copyright 2024 Cypress Semiconductor Corporation
+* SPDX-License-Identifier: Apache-2.0
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*****************************************************************************-->
+
+<PersonalityTemplate id="xmc_ecat" name="ECAT" version="1.0" xmlns="http://cypress.com/xsd/cyhwpersonality_v9">
+  <FittingRules>
+    <MappingRules>
+      <IpBlock name="xmc_ecat" />
+      <Resource name="ecat"/>
+    </MappingRules>
+  </FittingRules>
+  <ExposedMembers>
+    <ExposedMember key="suppressEcatPinCodeGen" paramId="suppressEcatPinCodeGen" />
+    <ExposedMember key="enable_output_port" paramId="enable_output_port" />
+  </ExposedMembers>
+
+  <Parameters>
+    <!-- Internal -->
+    <ParamBool id="debug" name="debug" group="Internal" default="false" visible="false" editable="false" desc="" />
+    <ParamBool id="suppressEcatPinCodeGen" name="suppressEcatPinCodeGen" group="Internal"
+      default="true" visible="false" editable="true"
+      desc="Prevents pins connected to this personality to generate configuration code" />
+    <ParamBool id="ecat_port0_enabled" name="Ecat Port 0 Enabled" group="Internal" default="`${isBlockUsed(&quot;ecat[0].port[0]&quot;)}`" visible="`${debug}`" editable="false" desc="" />
+    <ParamBool id="ecat_port1_enabled" name="Ecat Port 1 Enabled" group="Internal" default="`${isBlockUsed(&quot;ecat[0].port[1]&quot;)}`" visible="`${debug}`" editable="false" desc="" />
+
+    <!-- Peripheral documentation -->
+    <ParamDoc id="ecat_api_doc" name="ECAT API Help" group="Documentation" default="file:///`${cy_libs_path()}`/docs/api_reference_manual.html" linkText="Open ECAT Driver Documentation" visible="true" desc="Opens the XMC Peripheral Library Documentation." />
+
+    <!-- EEPROM Configuration -->
+    <ParamString id="eeprom_resource" name="EEPROM Resource" group="EEPROM Configuration" default="scu[0].eeprom[0]" visible="false" editable="false" desc="Eeprom resource." />
+    <ParamBool id="eeprom_error" name="EEPROM Error" group="EEPROM Configuration" default="`${!isBlockUsed(eeprom_resource)}`" visible="false" editable="false" desc="True when the Eeprom resource is not enabled." />
+    <ParamBool id="ecat_eeprom_enabled" name="Ecat EEPROM Enabled" group="EEPROM Configuration" default="`${isBlockUsed(eeprom_resource)}`" visible="`${debug}`" editable="false" desc="" />
+    <ParamRange id="ecat_eeprom_size" name="ECAT EEPROM size" group="EEPROM Configuration" default="2048" min="2048" max="8192" resolution="1" visible="true" editable="true" desc="ECAT EEPROM size.(min = 2048, max = 8192)" />
+    <ParamRange id="eeprom_size_exposed" name="EEPROM SIZE EXPOSED" group="EEPROM Configuration" default="`${ecat_eeprom_enabled ? getExposedMember(eeprom_resource, &quot;eeprom_size&quot;) : 0}`" min="1" max="8192" resolution="1" visible="`${debug}`" editable="false" desc="" />
+
+    <!-- General Settings -->
+    <ParamBool id="enable_reset" name="Enable Reset Request" group="General Settings" default="true" visible="true" editable="true" desc="HW abstraction layer interface API to reset the XMC ECAT module." />
+    <ParamBool id="enable_output_port" name="Enable Output Port" group="General Settings" default="true" visible="true" editable="false" desc="Enable output port." />
+    <ParamBool id="enable_PHY_interface" name="Enable PHY management interface" group="General Settings" default="true" visible="true" editable="true" desc="Enable PHY management interface." />
+    <ParamRange id="phyaddr_offset" name="PHY address of port 0" group="General Settings" default="0" min="0" max="31" resolution="1" visible="true" editable="true" desc="Offset address to move the PHY address to any concecutive address range.(min = 0, max = 31)" />
+
+    <!-- Connections -->
+    <!-- ECAT Clock Configuration -->
+    <ParamString id="clk_rsc" name="Clock Resource" group="ECAT Clock Configuration" default="scu[0].clock[0].ecatclk[0]" visible="false" editable="false" desc="" />
+    <ParamBool id="ecat_clk_enabled" name="Ecat Clock Enabled" group="ECAT Clock Configuration" default="`${isBlockUsed(clk_rsc)}`" visible="`${debug}`" editable="false" desc="" />
+    <ParamRange id="frequency" name="frequency" group="ECAT Clock Configuration" default="`${ecat_clk_enabled ? getExposedMember(clk_rsc, &quot;frequency&quot;) : 0}`" min="0" max="1000000000" resolution="1" visible="`${debug}`" editable="false" desc="" />
+
+    <ParamSignal port="mclk[0]" name="ECAT MCLK" group="Connections" visible="`${enable_PHY_interface}`" desc="ECAT MCLK" canBeEmpty="false" />
+    <ParamSignal port="led_err[0]" name="Enable LED_ERR pin" group="Connections" visible="`${hasVisibleOption(&quot;led_err[0]&quot;)}`" desc="ERR LED" canBeEmpty="false" />
+    <ParamSignal port="led_run[0]" name="Enable LED_RUN pin" group="Connections" visible="`${hasVisibleOption(&quot;led_run[0]&quot;)}`" desc="RUN LED" canBeEmpty="false" />
+    <ParamSignal port="led_link_act_p0[0]" name="Enable LED_LINK_ACT_P0 pin" group="Connections" visible="`${hasVisibleOption(&quot;led_link_act_p0[0]&quot;)}`" desc="Link/Activity state of port 0" canBeEmpty="false" />
+    <ParamSignal port="led_link_act_p1[0]" name="Enable LED_LINK_ACT_P1 pin" group="Connections" visible="`${enable_output_port &amp;&amp; hasVisibleOption(&quot;led_link_act_p1[0]&quot;)}`" desc="Link/Activity state of port 1" canBeEmpty="true" />
+
+    <ParamSignal port="sync0[0]" name="ECAT_SYNC0" group="Connections" visible="`${hasVisibleOption(&quot;sync0[0]&quot;)}`" desc="Sync 0 Signal" canBeEmpty="true" />
+    <ParamString id="sync0_define" name="SYNC0 Define" default="`${getDefineNameFromSignal(getParamValue(&quot;sync0[0]&quot;))}`" visible="`${debug}`" editable="false" group="Connections" desc=""/>
+    <ParamSignal port="sync1[0]" name="ECAT_SYNC1" group="Connections" visible="`${hasVisibleOption(&quot;sync1[0]&quot;)}`" desc="Sync 1 Signal" canBeEmpty="true" />
+    <ParamString id="sync1_define" name="SYNC1 Define" default="`${getDefineNameFromSignal(getParamValue(&quot;sync1[0]&quot;))}`" visible="`${debug}`" editable="false" group="Connections" desc=""/>
+        
+    <ParamSignal port="mdio[0]" name="MDIO" group="Connections" visible="true" desc="Management data I/O line" canBeEmpty="false">
+      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true">
+        <Parameter id="io_function" severity="ERROR" reason="">
+          <Fixed value="XMC_GPIO_HWCTRL" />
+        </Parameter>
+      </Constraint>
+    </ParamSignal>
+    <ParamString id="mdio_define" name="MDIO Trigger Define" default="`${getDefineNameFromSignal(getParamValue(&quot;mdio[0]&quot;)) . &quot;_TRIGGER_IN&quot;}`" visible="`${debug}`" editable="false" group="Connections" desc=""/>
+    <ParamSignal port="latchin0[0]" name="LATCHIN0" group="Connections" visible="true" desc="Latch input 0 selection" canBeEmpty="false" />
+    <ParamString id="latchin0_define" name="LATCHIN0 Trigger Define" default="`${getDefineNameFromSignal(getParamValue(&quot;latchin0[0]&quot;)) . &quot;_TRIGGER_IN&quot;}`" visible="`${debug}`" editable="false" group="Connections" desc=""/>
+    <ParamSignal port="latchin1[0]" name="LATCHIN1" group="Connections" visible="true" desc="Latch input 1 selection" canBeEmpty="false" />
+    <ParamString id="latchin1_define" name="LATCHIN1 Trigger Define" default="`${getDefineNameFromSignal(getParamValue(&quot;latchin1[0]&quot;)) . &quot;_TRIGGER_IN&quot;}`" visible="`${debug}`" editable="false" group="Connections" desc=""/>
+
+    <ParamSignal port="phy_clk25[0]" name="PHY CLK25" group="Connections" visible="`${hasVisibleOption(&quot;phy_clk25[0]&quot;)}`" desc="PHY clock signal" canBeEmpty="true" />
+    <ParamSignal port="phy_reset[0]" name="PHY RESET" group="Connections" visible="`${hasVisibleOption(&quot;phy_reset[0]&quot;)}`" desc="PHY reset signal" canBeEmpty="true" />
+
+    <ParamPlacement templateId="xmc_ecat_port0"
+      name="ECAT Port 0"
+      group="Placement Resources"
+      desc="XMC ECAT Port 0 resource placement."
+      visible="false" />
+
+    <ParamPlacement templateId="xmc_ecat_port1"
+      name="ECAT Port 1"
+      group="Placement Resources"
+      desc="XMC ECAT Port 1 resource placement."
+      visible="false" />
+
+    <ParamPlacement templateId="xmc_ecat_timer"
+      name="ECAT Timer Placement"
+      group="Placement Resources"
+      desc="XMC ECAT Timer resource placement."
+      visible="false" />
+
+    <!-- Internal -->
+    <Repeat count="2">
+      <ParamString templateId="xmc_ecat_port$idx" id="GROUP" default="`${getBlockDisplayName(INST_LOC,false)}` Configuration" editable="false" visible="false" group="" name="" desc=""/>
+      
+      <!-- Connections -->
+      <ParamSignal templateId="xmc_ecat_port$idx" port="link[0]" name="ECAT_LINK" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;link[0]&quot;)}`" desc="Link status" canBeEmpty="false" >
+      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true">
+        <Parameter id="io_function" severity="ERROR" reason="">
+          <Fixed value="XMC_GPIO_INPUT" />
+        </Parameter>
+      </Constraint>
+      </ParamSignal>
+      <ParamSignal templateId="xmc_ecat_port$idx" port="rx_err[0]" name="ECAT_RX_ERR" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;rx_err[0]&quot;)}`" desc="Receive error line" canBeEmpty="false" >
+      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true">
+        <Parameter id="io_function" severity="ERROR" reason="">
+          <Fixed value="XMC_GPIO_INPUT" />
+        </Parameter>
+      </Constraint>
+      </ParamSignal>
+      <ParamSignal templateId="xmc_ecat_port$idx" port="rx_dv[0]" name="ECAT_RX_DV" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;rx_dv[0]&quot;)}`" desc="Receive Data Valid" canBeEmpty="false" >
+      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true">
+        <Parameter id="io_function" severity="ERROR" reason="">
+          <Fixed value="XMC_GPIO_INPUT" />
+        </Parameter>
+      </Constraint>
+      </ParamSignal>
+      <ParamSignal templateId="xmc_ecat_port$idx" port="rx_clk[0]" name="ECAT_RX_CLK" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;rx_clk[0]&quot;)}`" desc="Receive clock line" canBeEmpty="false" >
+      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true">
+        <Parameter id="io_function" severity="ERROR" reason="">
+          <Fixed value="XMC_GPIO_INPUT" />
+        </Parameter>
+      </Constraint>
+      </ParamSignal>
+      <ParamSignal templateId="xmc_ecat_port$idx" port="rxd0[0]" name="ECAT_RXD0" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;rxd0[0]&quot;)}`" desc="Receive Data Line 0" canBeEmpty="false" >
+      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true">
+        <Parameter id="io_function" severity="ERROR" reason="">
+          <Fixed value="XMC_GPIO_INPUT" />
+        </Parameter>
+      </Constraint>
+      </ParamSignal>
+      <ParamSignal templateId="xmc_ecat_port$idx" port="rxd1[0]" name="ECAT_RXD1" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;rxd1[0]&quot;)}`" desc="Receive Data Line 1" canBeEmpty="false" >
+      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true">
+        <Parameter id="io_function" severity="ERROR" reason="">
+          <Fixed value="XMC_GPIO_INPUT" />
+        </Parameter>
+      </Constraint>
+      </ParamSignal>
+      <ParamSignal templateId="xmc_ecat_port$idx" port="rxd2[0]" name="ECAT_RXD2" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;rxd2[0]&quot;)}`" desc="Receive Data Line 2" canBeEmpty="false" >
+      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true">
+        <Parameter id="io_function" severity="ERROR" reason="">
+          <Fixed value="XMC_GPIO_INPUT" />
+        </Parameter>
+      </Constraint>
+      </ParamSignal>
+      <ParamSignal templateId="xmc_ecat_port$idx" port="rxd3[0]" name="ECAT_RXD3" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;rxd3[0]&quot;)}`" desc="Receive Data Line 3" canBeEmpty="false" >
+      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true">
+        <Parameter id="io_function" severity="ERROR" reason="">
+          <Fixed value="XMC_GPIO_INPUT" />
+        </Parameter>
+      </Constraint>
+      </ParamSignal>
+      <ParamSignal templateId="xmc_ecat_port$idx" port="tx_clk[0]" name="ECAT_TX_CLK" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;tx_clk[0]&quot;)}`" desc="Transmit clock" canBeEmpty="false" >
+      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true">
+        <Parameter id="io_function" severity="ERROR" reason="">
+          <Fixed value="XMC_GPIO_INPUT" />
+        </Parameter>
+      </Constraint>
+      </ParamSignal>
+      <ParamSignal templateId="xmc_ecat_port$idx" port="tx_ena[0]" name="ECAT_TX_ENA" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;tx_ena[0]&quot;)}`" desc="Transmit enable" canBeEmpty="false" />
+      <ParamSignal templateId="xmc_ecat_port$idx" port="txd0[0]" name="ECAT_TXD0" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;txd0[0]&quot;)}`" desc="Transmit Data Line 0" canBeEmpty="false" />
+      <ParamSignal templateId="xmc_ecat_port$idx" port="txd1[0]" name="ECAT_TXD1" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;txd1[0]&quot;)}`" desc="Transmit Data Line 1" canBeEmpty="false" />
+      <ParamSignal templateId="xmc_ecat_port$idx" port="txd2[0]" name="ECAT_TXD2" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;txd2[0]&quot;)}`" desc="Transmit Data Line 2" canBeEmpty="false" />
+      <ParamSignal templateId="xmc_ecat_port$idx" port="txd3[0]" name="ECAT_TXD3" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;txd3[0]&quot;)}`" desc="Transmit Data Line 3" canBeEmpty="false" />
+
+    </Repeat>
+    <!-- Network Interface -->
+      <ParamChoice templateId="xmc_ecat_port0" id="tx_shift" name="TX Shift Port 0" group="`${GROUP}`/Network Interface" default="XMC_ECAT_PORT0_CTRL_TX_SHIFT_0NS" visible="true" editable="true" desc="TX signal delay for port 0.">
+        <Entry name="0ns" value="XMC_ECAT_PORT0_CTRL_TX_SHIFT_0NS" visible="true" />
+        <Entry name="10ns" value="XMC_ECAT_PORT0_CTRL_TX_SHIFT_10NS" visible="true" />
+        <Entry name="20ns" value="XMC_ECAT_PORT0_CTRL_TX_SHIFT_20NS" visible="true" />
+        <Entry name="30ns" value="XMC_ECAT_PORT0_CTRL_TX_SHIFT_30NS" visible="true" />
+      </ParamChoice>
+
+      <ParamChoice templateId="xmc_ecat_port1" id="tx_shift" name="TX Shift Port 1" group="`${GROUP}`/Network Interface" default="XMC_ECAT_PORT1_CTRL_TX_SHIFT_0NS" visible="`${&quot;enable_output_port&quot;}`" editable="true" desc="TX signal delay for port 1.">
+        <Entry name="0ns" value="XMC_ECAT_PORT1_CTRL_TX_SHIFT_0NS" visible="true" />
+        <Entry name="10ns" value="XMC_ECAT_PORT1_CTRL_TX_SHIFT_10NS" visible="true" />
+        <Entry name="20ns" value="XMC_ECAT_PORT1_CTRL_TX_SHIFT_20NS" visible="true" />
+        <Entry name="30ns" value="XMC_ECAT_PORT1_CTRL_TX_SHIFT_30NS" visible="true" />
+      </ParamChoice>
+
+      <!-- Advanced Settings -->
+    <ParamBool id="inFlash" name="Store Config in Flash" group="Advanced" default="true" visible="true" editable="true" desc="Controls whether the configuration structure is stored in flash (const, true) or SRAM (not const, false)." />
+    <ParamRange id="ecat_irqn_priority" name="ECAT IRQn Priority" group="Advanced" default="63" min="0" max="63" resolution="1" visible="true" editable="true" desc="MTB XMC ECAT IRQn priority.(min = 0, max = 63)" />
+    <ParamBool id="enable_timer" name="Enable Timer" group="Advanced" default="true" visible="true" editable="true" desc="Enable timer." />
+  </Parameters>
+
+  <DRCs>
+    <DRC type="ERROR" text="The EtherCAT Clock resource must be enabled." condition="`${!ecat_clk_enabled}`"  location="scu[0].clock[0].ecatclk[0]">
+      <FixIt action="ENABLE_BLOCK" target="scu[0].clock[0].ecatclk[0]" value="xmc4_ecatclk-1.0" valid="true" />
+    </DRC>
+    <DRC type="ERROR" text="EEPROM is not enabled " condition="`${eeprom_error}`">
+      <FixIt action="ENABLE_BLOCK" target="`${eeprom_resource}`" value="" valid="true" />
+    </DRC>
+    <DRC type="ERROR" text="The EtherCAT Clock frequency must be 100 MHz. Use USB PLL or System PLL to set-up the frequency" condition="`${frequency ne 100000000}`"  location="scu[0].clock[0].ecatclk[0]"/>
+    <DRC type="WARNING" text="The ECAT EEPROM size should be less than EEPROM size" condition="`${eeprom_size_exposed &lt; ecat_eeprom_size}`" />
+  </DRCs>
+
+  <ConfigFirmware>
+    <ConfigInclude value="xmc_ecat_map.h" include="true" />
+    <ConfigInclude value="cycfg_routing.h" include="true" />
+    <ConfigInclude value="mtb_xmc_ecat.h" include="true" />
+    <ConfigDefine name="MTB_XMC_ECAT_MAX_SYNC_MAN" value="8U" public="false" include="true" />
+    <ConfigDefine name="MTB_XMC_ECAT_HANDLER" value="ECAT0_0_IRQHandler" public="true" include="true" />
+    <ConfigDefine name="MTB_XMC_ECAT_IRQN" value="ECAT0_0_IRQn" public="true" include="true" />
+    <ConfigDefine name="MTB_XMC_ECAT_IRQN_PRIORITY" value="`${ecat_irqn_priority}`" public="true" include="true" />
+    <ConfigDefine name="MTB_XMC_ECAT_EEPROM_SIZE" value="`${ecat_eeprom_size}`" public="true" include="true" />
+    <ConfigDefine name="MTB_XMC_ECAT_PORT1_ENABLED" value="1" public="true" include="`${ecat_port1_enabled}`" />
+    <ConfigStruct name="MTB_XMC_ECAT_port_control" type="XMC_ECAT_PORT_CTRL_t" const="`${inFlash}`" public="true" include="`${($idx eq 0) ? ecat_port0_enabled : ecat_port1_enabled}`" >
+      <ConfigStruct name="common" type="nested" const="`${inFlash}`" public="true" include="true" >
+        <Member name="enable_rstreq" value="`${enable_reset ? true : false}`"/>
+        <Member name="mdio" value="`${mdio_define}`"/>
+        <Member name="phyaddr_offset" value="`${phyaddr_offset}`" />
+        <Member name="latch_input0" value="`${latchin0_define}`"/>
+        <Member name="latch_input1" value="`${latchin1_define}`"/>
+      </ConfigStruct>
+      <ConfigStruct name="port0" type="nested" const="`${inFlash}`" public="true" include="true" >
+        <Member name="link" value="ECAT_PORT$idx_CTRL_LINK" include="true" />
+        <Member name="rx_err" value="ECAT_PORT$idx_CTRL_RX_ERR" include="true" />
+        <Member name="rx_dv" value="ECAT_PORT$idx_CTRL_RX_DV" include="true" />
+        <Member name="rx_clk" value="ECAT_PORT$idx_CTRL_RX_CLK" include="true" />
+        <Member name="rxd0" value="ECAT_PORT$idx_CTRL_RXD0" include="true" />
+        <Member name="rxd1" value="ECAT_PORT$idx_CTRL_RXD1" include="true" />
+        <Member name="rxd2" value="ECAT_PORT$idx_CTRL_RXD2" include="true" />
+        <Member name="rxd3" value="ECAT_PORT$idx_CTRL_RXD3" include="true" />
+        <Member name="tx_clk" value="ECAT_PORT$idx_CTRL_TX_CLK" include="true" />
+        <Member name="tx_shift" value="`${getExposedMember(&quot;ecat[0].port[0]&quot;, &quot;tx_shift&quot;)}`" include="`${ecat_port0_enabled}`" />
+      </ConfigStruct>
+      <ConfigStruct name="port1" type="nested" const="`${inFlash}`" public="true" include="true" >
+        <Member name="link" value="`${ecat_port1_enabled ? &quot;ECAT_PORT1_CTRL_LINK&quot; : &quot;XMC_ECAT_PORT1_CTRL_LINK_GND&quot;}`" include="true" />
+        <Member name="rx_err" value="`${ecat_port1_enabled ? &quot;ECAT_PORT1_CTRL_RX_ERR&quot; : &quot;XMC_ECAT_PORT1_CTRL_RX_ERR_GND&quot;}`" include="true" />
+        <Member name="rx_dv" value="`${ecat_port1_enabled ? &quot;ECAT_PORT1_CTRL_RX_DV&quot; : &quot;XMC_ECAT_PORT1_CTRL_RX_DV_GND&quot;}`" include="true" />
+        <Member name="rx_clk" value="`${ecat_port1_enabled ? &quot;ECAT_PORT1_CTRL_RX_CLK&quot; : &quot;XMC_ECAT_PORT1_CTRL_RX_CLK_GND&quot;}`" include="true" />
+        <Member name="rxd0" value="`${ecat_port1_enabled ? &quot;ECAT_PORT1_CTRL_RXD0&quot; : &quot;XMC_ECAT_PORT1_CTRL_RXD0_GND&quot;}`" include="true" />
+        <Member name="rxd1" value="`${ecat_port1_enabled ? &quot;ECAT_PORT1_CTRL_RXD1&quot; : &quot;XMC_ECAT_PORT1_CTRL_RXD1_GND&quot;}`" include="true" />
+        <Member name="rxd2" value="`${ecat_port1_enabled ? &quot;ECAT_PORT1_CTRL_RXD2&quot; : &quot;XMC_ECAT_PORT1_CTRL_RXD2_GND&quot;}`" include="true" />
+        <Member name="rxd3" value="`${ecat_port1_enabled ? &quot;ECAT_PORT1_CTRL_RXD3&quot; : &quot;XMC_ECAT_PORT1_CTRL_RXD3_GND&quot;}`" include="true" />
+        <Member name="tx_clk" value="`${ecat_port1_enabled ? &quot;ECAT_PORT1_CTRL_TX_CLK&quot; : &quot;XMC_ECAT_PORT1_CTRL_TX_CLK_GND&quot;}`" include="true" />
+        <Member name="tx_shift" value="`${getExposedMember(&quot;ecat[0].port[1]&quot;, &quot;tx_shift&quot;)}`" include="`${ecat_port1_enabled}`" />
+      </ConfigStruct>
+    </ConfigStruct>
+    
+    <ConfigFunction signature="void gpio_init_ecat_mdio(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;mdio[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;mdio[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;mdio[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;mdio[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;mdio[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;mdio[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="true" />
+
+    <ConfigFunction signature="void MTB_XMC_ECAT_%1(void)" body="XMC_ECAT_SetPortControl(MTB_XMC_ECAT_port_control);&#xA;    XMC_ECAT_DisableSyncManChannel(0);&#xA;    XMC_ECAT_DisableSyncManChannel(1);&#xA;    XMC_ECAT_DisableSyncManChannel(2);&#xA;    XMC_ECAT_DisableSyncManChannel(3);&#xA;    XMC_ECAT_DisableSyncManChannel(4);&#xA;    XMC_ECAT_DisableSyncManChannel(5);&#xA;    XMC_ECAT_DisableSyncManChannel(6);&#xA;    XMC_ECAT_DisableSyncManChannel(7);&#xA;    XMC_ECAT_DisableEvent(0xffffffffU);&#xA;" public="true" include="true" name="Initialization"/>
+
+    <ConfigFunction signature="void gpio_init_ecat_phy_clk25(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;phy_clk25[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;phy_clk25[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;phy_clk25[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;phy_clk25[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;phy_clk25[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;phy_clk25[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="true" />
+
+    <ConfigFunction signature="void gpio_init_ecat_mclk(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;mclk[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;mclk[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;mclk[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;mclk[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;mclk[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;mclk[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="true" />
+
+    <ConfigFunction signature="void gpio_init_p0_led_link_act(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;led_link_act_p0[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;led_link_act_p0[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;led_link_act_p0[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;led_link_act_p0[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;led_link_act_p0[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;led_link_act_p0[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="true" />
+
+    <ConfigFunction signature="void gpio_init_p1_led_link_act(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;led_link_act_p1[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;led_link_act_p1[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;led_link_act_p1[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;led_link_act_p1[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;led_link_act_p1[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;led_link_act_p1[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="`${enable_output_port}`" />
+
+    <ConfigFunction signature="void gpio_init_ecat_led_run(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;led_run[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;led_run[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;led_run[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;led_run[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;led_run[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;led_run[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="true" />
+
+    <ConfigFunction signature="void gpio_init_ecat_led_err(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;led_err[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;led_err[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;led_err[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;led_err[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;led_err[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;led_err[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="true" />
+
+    <ConfigFunction signature="void gpio_init_ecat_phy_reset(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;phy_reset[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;phy_reset[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;phy_reset[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;phy_reset[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;phy_reset[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;phy_reset[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="true" />
+
+    <ConfigFunction signature="void gpio_init_ecat_latchin0(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;latchin0[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;latchin0[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;latchin0[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;latchin0[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;latchin0[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;latchin0[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="`${hasMatch(latchin0_define, &quot;(digital_in_0_TRIGGER_IN)$&quot;)}`" />
+
+    <ConfigFunction signature="void gpio_init_ecat_latchin1(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;latchin1[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;latchin1[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;latchin1[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;latchin1[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;latchin1[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;latchin1[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="`${hasMatch(latchin1_define, &quot;(digital_in_0_TRIGGER_IN)$&quot;)}`" />
+
+    <ConfigFunction signature="void gpio_init_ecat_sync0(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;sync0[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;sync0[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;sync0[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;sync0[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;sync0[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;sync0[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="`${hasMatch(sync0_define, &quot;(digital_out_0)$&quot;)}`" />
+
+    <ConfigFunction signature="void gpio_init_ecat_sync1(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;sync1[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;sync1[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;sync1[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;sync1[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;sync1[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;sync1[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="`${hasMatch(sync1_define, &quot;(digital_out_0)$&quot;)}`" />
+  </ConfigFirmware>
+
+  <PersonalityTemplate id="xmc_ecat_port0" >
+    <FittingRules>
+      <MappingRules>
+        <IpBlock name="xmc_ecat" />
+        <Resource name="ecat\[0\]\.port\[0\]"/>
+      </MappingRules>
+    </FittingRules>
+    <ExposedMembers>
+      <ExposedMember key="tx_shift" paramId="tx_shift" />
+      <ExposedMember key="suppressEcatPinCodeGen" paramId="suppressEcatPinCodeGen" />
+    </ExposedMembers>
+
+    <Parameters>
+    <ParamBool id="suppressEcatPinCodeGen" name="suppressEcatPinCodeGen" group="Internal"
+      default="true" visible="false" editable="true"
+      desc="Prevents pins connected to this personality to generate configuration code" />
+    </Parameters>
+
+    <DRCs/>
+
+    <ConfigFirmware>
+    <ConfigFunction signature="void gpio_init_p0_link_status(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;link[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;link[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;link[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;link[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;link[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;link[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="true" />
+
+    <ConfigFunction signature="void gpio_init_p0_rxd3(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;rxd3[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rxd3[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;rxd3[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;rxd3[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rxd3[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;rxd3[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="true" />
+
+    <ConfigFunction signature="void gpio_init_p0_rxd2(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;rxd2[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rxd2[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;rxd2[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;rxd2[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rxd2[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;rxd2[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="true" />
+
+    <ConfigFunction signature="void gpio_init_p0_rxd1(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;rxd1[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rxd1[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;rxd1[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;rxd1[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rxd1[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;rxd1[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="true" />
+
+    <ConfigFunction signature="void gpio_init_p0_rxd0(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;rxd0[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rxd0[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;rxd0[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;rxd0[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rxd0[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;rxd0[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="true" />
+
+    <ConfigFunction signature="void gpio_init_p0_rx_dv(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;rx_dv[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rx_dv[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;rx_dv[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;rx_dv[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rx_dv[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;rx_dv[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="true" />
+    
+    <ConfigFunction signature="void gpio_init_p0_rx_clk(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;rx_clk[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rx_clk[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;rx_clk[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;rx_clk[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rx_clk[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;rx_clk[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="true" />
+
+    <ConfigFunction signature="void gpio_init_p0_rx_err(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;rx_err[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rx_err[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;rx_err[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;rx_err[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rx_err[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;rx_err[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="true" />
+
+    <ConfigFunction signature="void gpio_init_p0_tx_clk(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;tx_clk[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;tx_clk[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;tx_clk[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;tx_clk[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;tx_clk[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;tx_clk[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="true" />
+
+    <ConfigFunction signature="void gpio_init_p0_txd3(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;txd3[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;txd3[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;txd3[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;txd3[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;txd3[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;txd3[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="true" />
+
+    <ConfigFunction signature="void gpio_init_p0_txd2(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;txd2[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;txd2[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;txd2[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;txd2[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;txd2[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;txd2[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="true" />
+
+    <ConfigFunction signature="void gpio_init_p0_txd1(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;txd1[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;txd1[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;txd1[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;txd1[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;txd1[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;txd1[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="true" />
+
+    <ConfigFunction signature="void gpio_init_p0_txd0(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;txd0[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;txd0[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;txd0[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;txd0[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;txd0[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;txd0[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="true" />
+
+    <ConfigFunction signature="void gpio_init_p0_tx_ena(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;tx_ena[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;tx_ena[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;tx_ena[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;tx_ena[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;tx_ena[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;tx_ena[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="true" />
+    </ConfigFirmware>
+  </PersonalityTemplate>
+
+  <PersonalityTemplate id="xmc_ecat_port1" valid="`${getParamValue(&quot;xmc_ecat&quot;, &quot;enable_output_port&quot;)}`" >
+    <FittingRules>
+      <MappingRules>
+        <IpBlock name="xmc_ecat" />
+        <Resource name="ecat\[0\]\.port\[1\]"/>
+      </MappingRules>
+    </FittingRules>
+    <ExposedMembers>
+      <ExposedMember key="tx_shift" paramId="tx_shift" />
+      <ExposedMember key="suppressEcatPinCodeGen" paramId="suppressEcatPinCodeGen" />
+    </ExposedMembers>
+
+    <Parameters>
+    <ParamBool id="suppressEcatPinCodeGen" name="suppressEcatPinCodeGen" group="Internal"
+      default="true" visible="false" editable="true"
+      desc="Prevents pins connected to this personality to generate configuration code" />
+    </Parameters>
+
+    <DRCs/>
+
+    <ConfigFirmware>
+    <ConfigFunction signature="void gpio_init_p1_link_status(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;link[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;link[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;link[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;link[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;link[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;link[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="`${getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;)}`" />
+
+    <ConfigFunction signature="void gpio_init_p1_rxd3(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;rxd3[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rxd3[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;rxd3[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;rxd3[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rxd3[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;rxd3[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="`${getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;)}`" />
+
+    <ConfigFunction signature="void gpio_init_p1_rxd2(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;rxd2[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rxd2[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;rxd2[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;rxd2[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rxd2[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;rxd2[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="`${getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;)}`" />
+
+    <ConfigFunction signature="void gpio_init_p1_rxd1(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;rxd1[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rxd1[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;rxd1[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;rxd1[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rxd1[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;rxd1[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="`${getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;)}`" />
+
+    <ConfigFunction signature="void gpio_init_p1_rxd0(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;rxd0[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rxd0[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;rxd0[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;rxd0[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rxd0[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;rxd0[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="`${getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;)}`" />
+
+    <ConfigFunction signature="void gpio_init_p1_rx_dv(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;rx_dv[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rx_dv[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;rx_dv[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;rx_dv[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rx_dv[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;rx_dv[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="`${getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;)}`" />
+    
+    <ConfigFunction signature="void gpio_init_p1_rx_clk(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;rx_clk[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rx_clk[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;rx_clk[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;rx_clk[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rx_clk[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;rx_clk[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="`${getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;)}`" />
+
+    <ConfigFunction signature="void gpio_init_p1_rx_err(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;rx_err[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rx_err[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;rx_err[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;rx_err[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rx_err[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;rx_err[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="`${getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;)}`" />
+
+    <ConfigFunction signature="void gpio_init_p1_tx_clk(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;tx_clk[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;tx_clk[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;tx_clk[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;tx_clk[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;tx_clk[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;tx_clk[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="`${getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;)}`" />
+
+    <ConfigFunction signature="void gpio_init_p1_txd3(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;txd3[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;txd3[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;txd3[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;txd3[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;txd3[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;txd3[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="`${getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;)}`" />
+
+    <ConfigFunction signature="void gpio_init_p1_txd2(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;txd2[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;txd2[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;txd2[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;txd2[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;txd2[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;txd2[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="`${getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;)}`" />
+
+    <ConfigFunction signature="void gpio_init_p1_txd1(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;txd1[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;txd1[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;txd1[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;txd1[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;txd1[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;txd1[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="`${getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;)}`" />
+
+    <ConfigFunction signature="void gpio_init_p1_txd0(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;txd0[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;txd0[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;txd0[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;txd0[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;txd0[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;txd0[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="`${getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;)}`" />
+
+    <ConfigFunction signature="void gpio_init_p1_tx_ena(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;tx_ena[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;tx_ena[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;tx_ena[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;tx_ena[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;tx_ena[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;tx_ena[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="`${getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;)}`" />
+    </ConfigFirmware>
+
+  </PersonalityTemplate>
+
+    <PersonalityTemplate id="xmc_ecat_timer" valid="`${getParamValue(&quot;xmc_ecat&quot;, &quot;enable_timer&quot;)}`" >
+  <FittingRules>
+      <MappingRules>
+        <IpBlock name="xmc_ccu4" />
+        <Resource name="ccu4\[0\]\.ch\[3\]"/>
+      </MappingRules>
+    </FittingRules>
+  <ExposedMembers>
+    <ExposedMember key="baseAddressecat"  paramId="baseAddressecat" />
+    <ExposedMember key="irqHandler"  paramId="irqHandler" />
+    <ExposedMember key="irqNumber"  paramId="irqNumber" />
+    <ExposedMember key="period"  paramId="period" />
+    <ExposedMember key="isSR0Used" paramId="isSR0Used" />
+    <ExposedMember key="isSR1Used" paramId="isSR1Used" />
+    <ExposedMember key="isSR2Used" paramId="isSR2Used" />
+    <ExposedMember key="isSR3Used" paramId="isSR3Used" />
+    <ExposedMember key="sr_ecat" paramId="sr_ecat" />
+  </ExposedMembers>
+
+  <Parameters>
+  <!-- Internal -->
+    <ParamBool id="debug" name="debug" group="Internal" default="false" visible="false" editable="false" desc="" />
+    <ParamString id="module_num" name="Module Number" group="Internal" default="`${getInstNumber(&quot;ccu4&quot;)}`" visible="false" editable="false" desc="CCU4 parent module index." />
+    <ParamString id="channel_num" name="Channel Number" group="Internal" default="`${getInstNumber(&quot;ch&quot;)}`" visible="false" editable="false" desc="CCU4 channel slice index." />
+    <ParamString id="baseAddressecat" name="baseAddressecat" group="Internal" default="CCU4`${module_num}`_CC4`${channel_num}`" visible="`${debug}`" editable="false" desc="" />
+    <ParamString id="module_resource" name="Module Resource" group="Internal" default="ccu4[`${module_num}`]" visible="false" editable="false" desc="CCU4 parent module resource path." />
+    <ParamBool id="module_error" name="Module Error" group="Internal" default="`${!isBlockUsed(module_resource)}`" visible="false" editable="false" desc="True when the CCU4 module resource is not enabled." />
+    <ParamRange id="clock_freq" name="Clock Frequency" group="Internal" default="`${module_error ? 0.0 : getExposedMember(module_resource, &quot;frequency&quot;)}`" min="1" max="1000000000" resolution="1" visible="false" editable="false" desc="" />
+    <ParamString id="ip_version" name="IP Block Version" group="Internal" default="`${getVersion()}`" visible="false" editable="false" desc="" />
+    <ParamBool id="ip_ver1" name="IP Block Version 1" desc="True for XMC4100, XMC4200, XMC4400, XMC4500 series" group="Internal" default="`${ip_version == 1}`" visible="false" editable="false" />
+    <ParamBool id="ip_ver2" name="IP Block Version 2" desc="True for XMC1100, XMC1200, XMC1300, XMC4300, XMC4700, XMC4800 series" group="Internal" default="`${ip_version == 2}`" visible="false" editable="false" />
+    <ParamBool id="ip_ver3" name="IP Block Version 3" desc="True for XMC1400 series" group="Internal" default="`${ip_version == 3}`" visible="false" editable="false" />
+    <ParamString id="clock_resource" name="Clock Resource" group="Internal" default="scu[0].clock[0].ccuclk[0]" visible="false" editable="false" desc="Resource clock for CCU4" />
+    <ParamBool id="clock_enabled" name="Clock Enabled" group="Internal" default="`${isBlockUsed(clock_resource)}`" visible="false" editable="false" desc="True when the resource clock for CCU4 is enabled" />
+    <ParamBool id="clock_source_not_mclk" name="Clock Source is not MCLK" group="Internal" default="`${ip_ver3 &amp;&amp; clock_enabled ? (getExposedMember(clock_resource, &quot;sourceClockDisplayName&quot;) ne &quot;MCLK&quot;) : false}`" desc="True when PCLK source is not MCLK" visible="false" editable="false" />
+    <ParamString id="globalBaseAddr" name="globalBaseAddr" group="Internal" default="`${module_error ? NULL : getExposedMember(module_resource, &quot;baseAddr&quot;)}`" visible="`${debug}`" editable="false" desc="" />
+
+    <!-- Documentation -->
+    <ParamDoc id="ecatapiDoc" name="API Help" group="Documentation" default="file:///`${cy_libs_path()}`/docs/xmc4_api_reference_manual/html/group___e_c_a_t.html" linkText="Open ECAT Documentation" visible="true" desc="Open ECAT Documentation" />
+    
+    <!-- General Settings -->
+    <ParamRange id="prescaler_initial_value" name="prescaler_initial_value" group="General" default="`${(clock_freq &lt; 48000000) ? 1 : (clock_freq &lt; 96000000) ? 2 : 4}`" min="1" max="32768" resolution="1" visible="`${debug}`" editable="false" desc="Prescaler value used to divide the clock." />
+    <ParamRange id="tick_resolution" name="Tick Resolution (ns)" group="General"
+      default="`${(clock_freq eq 0.0) ? 0.0 : (prescaler_initial_value * 1.0E9 / clock_freq)}`" min="0" max="3276800000000.0" resolution="0.000001"
+      visible="`${debug}`" editable="false" desc="Actual slice frequency after division using prescaler." />
+    <ParamRange id="tick_resolution_int" name="Tick Resolution (ns)" group="Internal"
+      default="`${tick_resolution}`" min="0" max="3276800000000.0" resolution="1"
+      visible="false" editable="false" desc="Tick Resolution (ns), rounded to the integer value." />
+    <ParamRange id="ecat_timer_irqn_priority" name="ECAT Timer IRQn Priority" group="General Settings" default="63" min="0" max="63" resolution="1" visible="true" editable="true" desc="MTB XMC ECAT TIMER IRQn priority.(min = 0, max = 63)" />
+    <ParamChoice id="sr_ecat" name="Service Request for Timer" group="General Settings" default="3" visible="`${&quot;enable_timer&quot;}`" editable="true" desc="Selects the service request to trigger the timer interrupt.">
+      <Entry name="Service Request 0" value="0" visible="true"/>
+      <Entry name="Service Request 1" value="1" visible="true"/>
+      <Entry name="Service Request 2" value="2" visible="true"/>
+      <Entry name="Service Request 3" value="3" visible="true"/>
+    </ParamChoice>
+
+    <!-- Compare Mode Settings -->
+    <ParamRange id="timer_period_value" name="Timer Period Value" group="Compare Mode" default="`${1000000 / tick_resolution}`" min="0" max="65535" resolution="1" visible="`${debug}`" editable="false" desc="Select value of the timer period." />   
+    <ParamRange id="period" name="Period (ns)" group="Compare Mode" default="`${tick_resolution * timer_period_value}`" min="0" max="1000000000" resolution="0.1" visible="`${debug}`" editable="false" desc="The timer period in nanoseconds" />
+
+    <!-- Timer Events -->  
+    <ParamString id="irqHandler" name="irqHandler" group="Internal" default="CCU4`${module_num}`_`${sr_ecat}`_IRQHandler" visible="`${debug}`" editable="false" desc="" />
+    <ParamString id="irqNumber" name="irqNumber" group="Internal" default="CCU4`${module_num}`_`${sr_ecat}`_IRQn" visible="`${debug}`" editable="false" desc="" />
+    <Repeat count="4">
+      <ParamBool id="isSR$idxUsed" name="isSR0Used" group="Internal" default="`${sr_ecat eq $idx}`" visible="`${debug}`" editable="false" desc="" />
+    </Repeat>
+
+    <!-- Connections -->
+    <Repeat count="3">
+      <ParamSignal port="in$idx[0]" name="Event $idx Input Signal" group="Connections" visible="`${debug}`" desc="CCU4 slice event $idx input signal" canBeEmpty="true" />
+    </Repeat>
+
+  </Parameters>
+
+  <DRCs>
+  <DRC type="ERROR" text="Capture/Compare Unit 4 module instance `${module_num}` is not enabled" condition="`${module_error}`" >
+      <FixIt action="ENABLE_BLOCK" target="`${module_resource}`" value="" valid="true" />
+    </DRC>
+  </DRCs>
+
+  <ConfigFirmware>
+  <ConfigInclude value="cycfg_routing.h" include="`${hasConnection(&quot;in0&quot;, 0) || hasConnection(&quot;in1&quot;, 0) || hasConnection(&quot;in2&quot;, 0)}`" />
+    <ConfigInclude value="xmc_ccu4.h" include="true" />
+    <ConfigDefine name="MTB_XMC_ECAT_Timer_NUM" value="`${channel_num}`U" public="true" include="true" />
+    <ConfigDefine name="MTB_XMC_ECAT_Timer_HW" value="`${baseAddressecat}`" public="true" include="true" />
+    <ConfigDefine name="MTB_XMC_ECAT_Timer_INTERRUPT_HANDLER" value="`${irqHandler}`" public="true" include="true" />
+    <ConfigDefine name="MTB_XMC_ECAT_Timer_IRQN" value="`${irqNumber}`" public="true" include="true" />
+    <ConfigDefine name="MTB_XMC_ECAT_TIMER_IRQN_PRIORITY" value="`${ecat_timer_irqn_priority}`" public="true" include="true" />
+    <ConfigDefine name="MTB_XMC_ECAT_Timer_EVENT" value="XMC_CCU4_SLICE_IRQ_ID_PERIOD_MATCH" public="true" include="true" />
+    <ConfigStruct name="ECAT_Timer_compare_config" type="XMC_CCU4_SLICE_COMPARE_CONFIG_t" const="true" public="true" include="true">
+      <Member name="timer_mode" value="XMC_CCU4_SLICE_TIMER_COUNT_MODE_EA" />
+      <Member name="monoshot" value="XMC_CCU4_SLICE_TIMER_REPEAT_MODE_REPEAT" />
+      <Member name="shadow_xfer_clear" value="false" />
+      <Member name="dither_timer_period" value="false" />
+      <Member name="dither_duty_cycle" value="false" />
+      <Member name="prescaler_mode" value="XMC_CCU4_SLICE_PRESCALER_MODE_NORMAL" />
+      <Member name="prescaler_initval" value="XMC_CCU4_SLICE_PRESCALER_`${prescaler_initial_value}`" />
+      <Member name="float_limit" value="XMC_CCU4_SLICE_PRESCALER_32768" />
+      <Member name="dither_limit" value="0U" />
+      <Member name="passive_level" value="XMC_CCU4_SLICE_OUTPUT_PASSIVE_LEVEL_LOW" />
+      <Member name="timer_concatenation" value="false" />
+    </ConfigStruct>
+
+    <ConfigInstruction value="XMC_CCU4_SLICE_CompareInit(MTB_XMC_ECAT_Timer_HW, &amp;ECAT_Timer_compare_config);" include="true" purpose="INITIALIZE" />
+    <ConfigInstruction value="XMC_CCU4_SLICE_SetTimerPeriodMatch(MTB_XMC_ECAT_Timer_HW, `${timer_period_value}`U);" include="true" purpose="INITIALIZE" />
+    <ConfigInstruction value="XMC_CCU4_SLICE_`${&quot;Disable&quot;}`CascadedShadowTransfer(MTB_XMC_ECAT_Timer_HW);" include="`${ip_ver3}`" purpose="INITIALIZE" />
+    <ConfigInstruction value="XMC_CCU4_EnableShadowTransfer(`${globalBaseAddr}`,&#xA;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;XMC_CCU4_SHADOW_TRANSFER_SLICE_`${channel_num}` |&#xA;&#x9;&#x9;XMC_CCU4_SHADOW_TRANSFER_DITHER_SLICE_`${channel_num}` |&#xA;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;XMC_CCU4_SHADOW_TRANSFER_PRESCALER_SLICE_`${channel_num}` );" include="true" purpose="INITIALIZE" />
+    <ConfigInstruction value="XMC_CCU4_SLICE_SetInterruptNode(MTB_XMC_ECAT_Timer_HW, XMC_CCU4_SLICE_IRQ_ID_PERIOD_MATCH, XMC_CCU4_SLICE_SR_ID_`${sr_ecat}`);" include="true" purpose="INITIALIZE" />
+    <ConfigInstruction value="XMC_CCU4_SLICE_EnableEvent(MTB_XMC_ECAT_Timer_HW, XMC_CCU4_SLICE_IRQ_ID_PERIOD_MATCH);" include="true" purpose="INITIALIZE" />
+    <ConfigInstruction value="XMC_CCU4_EnableClock(`${globalBaseAddr}`, MTB_XMC_ECAT_Timer_NUM);" include="true" purpose="INITIALIZE" />
+    <ConfigInstruction value="XMC_CCU4_SLICE_SetTimerValue(MTB_XMC_ECAT_Timer_HW, 0U);" include="true" purpose="INITIALIZE" />
+  </ConfigFirmware>
+
+</PersonalityTemplate>
+
+</PersonalityTemplate>

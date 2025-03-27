@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="README_8doxygen_8md" kind="file" language="Markdown">
+    <compoundname>README.doxygen.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>MTB<sp/>XMC<sp/>ECAT<sp/>Library<sp/>1.0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Overview</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>EtherCAT<sp/>Middleware<sp/>consists<sp/>of<sp/>all<sp/>the<sp/>elements<sp/>necessary<sp/>to<sp/>start<sp/>the<sp/>EtherCAT<sp/>slave</highlight></codeline>
+<codeline><highlight class="normal">development<sp/>with<sp/>the<sp/>Beckhoff<sp/>Slave<sp/>Stack<sp/>Code<sp/>(SSC)<sp/>including<sp/>the<sp/>EtherCAT<sp/></highlight></codeline>
+<codeline><highlight class="normal">Slave<sp/>Solution<sp/>personality<sp/>for<sp/>the<sp/>ModusToolbox&amp;trade;.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Important<sp/>Notice<sp/>Regarding<sp/>Use<sp/>of<sp/>Middleware:**<sp/>This<sp/>Middleware<sp/>works<sp/>only<sp/>with<sp/>the<sp/>slave</highlight></codeline>
+<codeline><highlight class="normal"><sp/>stack<sp/>code<sp/>generated<sp/>by<sp/>the<sp/>Beckhoff<sp/>SSC<sp/>tool.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Features</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>The<sp/>Middleware<sp/>provides<sp/>already<sp/>implemented<sp/>APIs<sp/>required<sp/>by<sp/>the<sp/>SSC<sp/>stack<sp/>and<sp/>common<sp/>functions.</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Contains<sp/>the<sp/>ECAT<sp/>personality<sp/>and<sp/>Excel<sp/>file<sp/>with<sp/>the<sp/>Stack<sp/>configuration.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Quick<sp/>Start</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Refer<sp/>to<sp/>the<sp/>[API<sp/>Reference<sp/>Guide<sp/>Quick<sp/>Start<sp/>Guide](https://infineon.github.io/mtb-xmc-ecat/html/index.html)</highlight></codeline>
+<codeline><highlight class="normal">section<sp/>for<sp/>step-by-step<sp/>instruction<sp/>how<sp/>to<sp/>enable<sp/>the<sp/>MTB<sp/>XMC<sp/>ECAT<sp/>Library.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>More<sp/>information</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">For<sp/>more<sp/>information,<sp/>refer<sp/>to<sp/>the<sp/>following<sp/>documents:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*<sp/>[MTB<sp/>XMC<sp/>ECAT<sp/>Library<sp/>API<sp/>Reference<sp/>Guide](https://infineon.github.io/mtb-xmc-ecat/html/index.html)</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>[ModusToolbox<sp/>Software<sp/>Environment,<sp/>Quick<sp/>Start<sp/>Guide,<sp/>Documentation,<sp/>and<sp/>Videos](https://www.infineon.com/cms/en/design-support/tools/sdk/modustoolbox-software)</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>[Infineon<sp/>Technologies<sp/>AG](https://www.infineon.com)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">©<sp/>2025,<sp/>Cypress<sp/>Semiconductor<sp/>Corporation<sp/>(an<sp/>Infineon<sp/>company)<sp/>or<sp/>an<sp/>affiliate<sp/>of<sp/>Cypress<sp/>Semiconductor<sp/>Corporation.</highlight></codeline>
+    </programlisting>
+    <location file="README.doxygen.md"/>
+  </compounddef>
+</doxygen>

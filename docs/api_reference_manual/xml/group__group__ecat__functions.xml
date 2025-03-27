@@ -1,0 +1,965 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="group__group__ecat__functions" kind="group">
+    <compoundname>group_ecat_functions</compoundname>
+    <title>API Prototypes</title>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__group__ecat__functions_1ga0126681297bcf1ef47e082ac5472f554" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtb_xmc_ecat_timer_stop_reset</definition>
+        <argsstring>(void)</argsstring>
+        <name>mtb_xmc_ecat_timer_stop_reset</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Description: </title><para>This function stops and resets a timer for the EtherCAT. <linebreak/>
+ </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="159" column="6" bodyfile="mtb_xmc_ecat_timer.c" bodystart="52" bodyend="56" declfile="mtb_xmc_ecat.h" declline="159" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1gab91c48d69b3bf7f8082ec958f93a9a59" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtb_xmc_ecat_timer_start</definition>
+        <argsstring>(void)</argsstring>
+        <name>mtb_xmc_ecat_timer_start</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Description: </title><para>This function starts a timer for the EtherCAT. <linebreak/>
+ </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="170" column="6" bodyfile="mtb_xmc_ecat_timer.c" bodystart="46" bodyend="49" declfile="mtb_xmc_ecat.h" declline="170" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1gaa06b6c4b719e6c8535aa1cd525af5217" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>E_EEPROM_XMC4_STATUS_t</type>
+        <definition>E_EEPROM_XMC4_STATUS_t mtb_xmc_ecat_eeprom_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>mtb_xmc_ecat_eeprom_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="return"><para>E_EEPROM_XMC4_STATUS_t</para>
+</simplesect>
+<simplesect kind="par"><title>Description: </title><para>This function initializes an EEPROM for the EtherCAT. <linebreak/>
+ </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="181" column="24" bodyfile="mtb_xmc_ecat_eeprom.c" bodystart="60" bodyend="84" declfile="mtb_xmc_ecat.h" declline="181" declcolumn="24"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1gaa242cdd50e00a5d4e3e33251c3d654d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t mtb_xmc_ecat_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>mtb_xmc_ecat_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="return"><para>Status 0, if the operation was successful.<linebreak/>
+ greater than 0, an error has occurred.</para>
+</simplesect>
+<simplesect kind="par"><title>Description: </title><para>This function initializes the EtherCAT using EEPROM, timer, ECAT slave hardware, and generic slave stack initialization functions. <linebreak/>
+ </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="194" column="10" bodyfile="mtb_xmc_ecat.c" bodystart="171" bodyend="197" declfile="mtb_xmc_ecat.h" declline="194" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1ga9f19b7a29451a2be5bc5ce1d03541d66" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>__STATIC_INLINE void</type>
+        <definition>__STATIC_INLINE void HW_EscRead</definition>
+        <argsstring>(MEM_ADDR *pData, UINT16 Address, UINT16 Len)</argsstring>
+        <name>HW_EscRead</name>
+        <param>
+          <type>MEM_ADDR *</type>
+          <declname>pData</declname>
+        </param>
+        <param>
+          <type>UINT16</type>
+          <declname>Address</declname>
+        </param>
+        <param>
+          <type>UINT16</type>
+          <declname>Len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to local destination buffer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>EtherCAT Slave Controller address. Specifies the offset within the ESC memory area in Bytes. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Access size in Bytes <linebreak/>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Returns</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>16Bit ESC read access. Reads from the EtherCAT Slave Controller. This function is used to access ESC registers and the DPRAM area. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="209" column="22" bodyfile="mtb_xmc_ecat.h" bodystart="209" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1ga6377e7c9fe76cb6b21db844e18a6f4c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>__STATIC_INLINE void</type>
+        <definition>__STATIC_INLINE void HW_EscReadIsr</definition>
+        <argsstring>(MEM_ADDR *pData, UINT16 Address, UINT16 Len)</argsstring>
+        <name>HW_EscReadIsr</name>
+        <param>
+          <type>MEM_ADDR *</type>
+          <declname>pData</declname>
+        </param>
+        <param>
+          <type>UINT16</type>
+          <declname>Address</declname>
+        </param>
+        <param>
+          <type>UINT16</type>
+          <declname>Len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to local destination buffer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>EtherCAT Slave Controller address. Specifies the offset within the ESC memory area in Bytes. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Access size in Bytes <linebreak/>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Returns</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Interrupt specific 16Bit ESC read access. Reads from the EtherCAT Slave Controller. This function is used to access ESC registers and the DPRAM area. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="228" column="22" bodyfile="mtb_xmc_ecat.h" bodystart="228" bodyend="231"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1gad76f93070d5d6df7295e9a758d90a691" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>__STATIC_INLINE void</type>
+        <definition>__STATIC_INLINE void HW_EscReadMbxMem</definition>
+        <argsstring>(MEM_ADDR *pData, UINT16 Address, UINT16 Len)</argsstring>
+        <name>HW_EscReadMbxMem</name>
+        <param>
+          <type>MEM_ADDR *</type>
+          <declname>pData</declname>
+        </param>
+        <param>
+          <type>UINT16</type>
+          <declname>Address</declname>
+        </param>
+        <param>
+          <type>UINT16</type>
+          <declname>Len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to local destination mailbox buffer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>EtherCAT Slave Controller address. Specifies the offset within the ESC memory area in Bytes. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Access size in Bytes <linebreak/>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Returns</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Reads data from the ESC and copies to slave mailbox memory. If the local mailbox memory is also located in the application memory this function is equal to HW_EscRead. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="247" column="22" bodyfile="mtb_xmc_ecat.h" bodystart="247" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1ga5f83e4f9f7954113562fc90a6e190b56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>__STATIC_INLINE void</type>
+        <definition>__STATIC_INLINE void HW_EscWrite</definition>
+        <argsstring>(MEM_ADDR *pData, UINT16 Address, UINT16 Len)</argsstring>
+        <name>HW_EscWrite</name>
+        <param>
+          <type>MEM_ADDR *</type>
+          <declname>pData</declname>
+        </param>
+        <param>
+          <type>UINT16</type>
+          <declname>Address</declname>
+        </param>
+        <param>
+          <type>UINT16</type>
+          <declname>Len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to local source buffer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>EtherCAT Slave Controller address. Specifies the offset within the ESC memory area in Bytes. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Access size in Bytes <linebreak/>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Returns</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>16Bit ESC write access. Writes from the EtherCAT Slave Controller. This function is used to access ESC registers and the DPRAM area. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="266" column="22" bodyfile="mtb_xmc_ecat.h" bodystart="266" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1gaa1b29bd56cb086914ba8b3115f05753f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>__STATIC_INLINE void</type>
+        <definition>__STATIC_INLINE void HW_EscWriteIsr</definition>
+        <argsstring>(MEM_ADDR *pData, UINT16 Address, UINT16 Len)</argsstring>
+        <name>HW_EscWriteIsr</name>
+        <param>
+          <type>MEM_ADDR *</type>
+          <declname>pData</declname>
+        </param>
+        <param>
+          <type>UINT16</type>
+          <declname>Address</declname>
+        </param>
+        <param>
+          <type>UINT16</type>
+          <declname>Len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to local source buffer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>EtherCAT Slave Controller address. Specifies the offset within the ESC memory area in Bytes. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Access size in Bytes <linebreak/>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Returns</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Interrupt specific 16Bit ESC write access. Writes from the EtherCAT Slave Controller. This function is used to access ESC registers and the DPRAM area. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="285" column="22" bodyfile="mtb_xmc_ecat.h" bodystart="285" bodyend="288"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1ga12756fd515cfe789d80aff240bf64566" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>__STATIC_INLINE void</type>
+        <definition>__STATIC_INLINE void HW_EscWriteMbxMem</definition>
+        <argsstring>(MEM_ADDR *pData, UINT16 Address, UINT16 Len)</argsstring>
+        <name>HW_EscWriteMbxMem</name>
+        <param>
+          <type>MEM_ADDR *</type>
+          <declname>pData</declname>
+        </param>
+        <param>
+          <type>UINT16</type>
+          <declname>Address</declname>
+        </param>
+        <param>
+          <type>UINT16</type>
+          <declname>Len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pData</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to local source mailbox buffer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>EtherCAT Slave Controller address. Specifies the offset within the ESC memory area in Bytes. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Len</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Access size in Bytes <linebreak/>
+</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="par"><title>Returns</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Writes data from the slave mailbox memory to ESC memory. If the local mailbox memory is also located in the application memory this function is equal to HW_EscWrite. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="304" column="22" bodyfile="mtb_xmc_ecat.h" bodystart="304" bodyend="307"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1gabff9821bdaa25f4b8009ee02b819eab4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>__STATIC_INLINE UINT16</type>
+        <definition>__STATIC_INLINE UINT16 HW_GetALEventRegister</definition>
+        <argsstring>(void)</argsstring>
+        <name>HW_GetALEventRegister</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="return"><para>Content of register 0x220-0x221 <linebreak/>
+</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Get the first two bytes of the AL Event register. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="320" column="24" bodyfile="mtb_xmc_ecat.h" bodystart="320" bodyend="323"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1gac191bd48a54d61c8030558e3dd6b1675" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>__STATIC_INLINE UINT16</type>
+        <definition>__STATIC_INLINE UINT16 HW_GetALEventRegister_Isr</definition>
+        <argsstring>(void)</argsstring>
+        <name>HW_GetALEventRegister_Isr</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="return"><para>None <linebreak/>
+</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Get the first two bytes of the AL Event register from ISR. Special function for ESC access from interrupt service routines if required, otherwise this function is defined as HW_GetALEventRegister. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="337" column="24" bodyfile="mtb_xmc_ecat.h" bodystart="337" bodyend="340"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1gaff04a03f4b620fa8b6b1a9f8fc34399d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ENABLE_ESC_INT</definition>
+        <argsstring>(void)</argsstring>
+        <name>ENABLE_ESC_INT</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Function to enable the XMC EtherCAT slave controller interrupt. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="352" column="6" bodyfile="mtb_xmc_ecat.c" bodystart="219" bodyend="226" declfile="mtb_xmc_ecat.h" declline="352" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1ga5b201ce6942f85e51d449673efc44332" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void DISABLE_ESC_INT</definition>
+        <argsstring>(void)</argsstring>
+        <name>DISABLE_ESC_INT</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Function to disable the XMC EtherCAT slave controller interrupt. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="363" column="6" bodyfile="mtb_xmc_ecat.c" bodystart="229" bodyend="242" declfile="mtb_xmc_ecat.h" declline="363" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1gaeda7038680e2fa58ece91f53974b05d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtb_xmc_enable_user_int</definition>
+        <argsstring>(void)</argsstring>
+        <name>mtb_xmc_enable_user_int</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>This routine is called from ECAT_APP on request of SSC stack once specific EtherCAT interrupts (sync1/sync0) need to be enabled. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="375" column="6" bodyfile="mtb_xmc_ecat.c" bodystart="201" bodyend="203" declfile="mtb_xmc_ecat.h" declline="375" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1ga96efe3f2f7d04809de2c41dbe99b672e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtb_xmc_disable_user_int</definition>
+        <argsstring>(void)</argsstring>
+        <name>mtb_xmc_disable_user_int</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>This routine is called from ECAT_APP on request of SSC stack once specific EtherCAT interrupts (sync1/sync0) need to be disabled. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="387" column="6" bodyfile="mtb_xmc_ecat.c" bodystart="207" bodyend="209" declfile="mtb_xmc_ecat.h" declline="387" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1gafd2e227187852d4c570a293358ffcf60" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 HW_GetTimer</definition>
+        <argsstring>(void)</argsstring>
+        <name>HW_GetTimer</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="return"><para>Current timer value <linebreak/>
+</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Reads the hardware timer value in ticks. The timer ticks value (increments / ms) is defined in ECAT_TIMER_INC_P_MS. This function is required, if no timer interrupt is supported (ECAT_TIMER_INT = 0) and to calculate the bus cycle time. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="401" column="8" bodyfile="mtb_xmc_ecat_timer.c" bodystart="70" bodyend="73" declfile="mtb_xmc_ecat.h" declline="401" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1ga78e91b358f044ab24c77aee66b46b15c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void HW_ClearTimer</definition>
+        <argsstring>(void)</argsstring>
+        <name>HW_ClearTimer</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Clears the hardware timer value. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="412" column="6" bodyfile="mtb_xmc_ecat_timer.c" bodystart="76" bodyend="79" declfile="mtb_xmc_ecat.h" declline="412" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1ga8e87560251ba1d0b3ab4f410c94b8190" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT16</type>
+        <definition>UINT16 HW_Init</definition>
+        <argsstring>(void)</argsstring>
+        <name>HW_Init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="return"><para>0 if initialization was successful,<linebreak/>
+ Else, if error has occurred while initialization <linebreak/>
+</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Initializes the host controller, process data interface (PDI) and allocates resources which are required for hardware access. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="427" column="8" bodyfile="mtb_xmc_ecat.c" bodystart="68" bodyend="155" declfile="mtb_xmc_ecat.h" declline="427" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1ga2560427ecfa14054fca4a426ab12bec5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void HW_Release</definition>
+        <argsstring>(void)</argsstring>
+        <name>HW_Release</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Release allocated reserved resources. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="438" column="6" bodyfile="mtb_xmc_ecat.c" bodystart="159" bodyend="161" declfile="mtb_xmc_ecat.h" declline="438" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1ga5d87c1b0f55ff8e91eaf01fa50ad35b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void HW_RestartTarget</definition>
+        <argsstring>(void)</argsstring>
+        <name>HW_RestartTarget</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Resets the hardware. This function is only required if BOOTSTRAPMODE_SUPPORTED is set. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="449" column="6" bodyfile="mtb_xmc_ecat.c" bodystart="165" bodyend="167" declfile="mtb_xmc_ecat.h" declline="449" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1gabf3c8c7637bd58f7543030f94033a537" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT16</type>
+        <definition>UINT16 HW_EepromRead</definition>
+        <argsstring>(UINT32 wordaddr)</argsstring>
+        <name>HW_EepromRead</name>
+        <param>
+          <type>UINT32</type>
+          <declname>wordaddr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>wordaddr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>start word address within the EEPROM memory</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0, if the operation was successful.<linebreak/>
+ greater than 0, an error has occurred. <linebreak/>
+</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Copies EEPROM data to the ESC EEPROM data register. This is only required if EEPROM_EMULATION is enabled and no EEPROM content is created (CREATE_EEPROM_CONTENT== 0). This function shall copy EEPROM data to the ESC EEPROM data register (0x508:0x50F/0x50B).The EEPROM data starting at the specified word address and the length specified with &quot;EEPROM_READ_SIZE&quot;. The data shall be copied to the ESC EEPROM buffer (ESC offset 0x508). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="465" column="8" bodyfile="mtb_xmc_ecat_eeprom.c" bodystart="87" bodyend="93" declfile="mtb_xmc_ecat.h" declline="465" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1ga30b53dd5a74cc69be48690ef52aad451" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT16</type>
+        <definition>UINT16 HW_EepromWrite</definition>
+        <argsstring>(UINT32 wordaddr)</argsstring>
+        <name>HW_EepromWrite</name>
+        <param>
+          <type>UINT32</type>
+          <declname>wordaddr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>wordaddr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>start word address within the EEPROM memory</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0, if the operation was successful.<linebreak/>
+ greater than 0, an error has occurred. <linebreak/>
+</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Writes the EEPROM configuration information from ESC data register to EEPROM. This is only required if EEPROM_EMULATION is enabled and no EEPROM content is created (CREATE_EEPROM_CONTENT== 0). This function shall copy data from the ESC EEPROM data register (0x508:0x50F/0x50B).The EEPROM data starting at the specified word address and the length specified with &quot;EEPROM_WRITE_SIZE&quot;. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="481" column="8" bodyfile="mtb_xmc_ecat_eeprom.c" bodystart="97" bodyend="124" declfile="mtb_xmc_ecat.h" declline="481" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1ga549c3cd340478f3efc53d3e35fff5bd2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT16</type>
+        <definition>UINT16 HW_EepromReload</definition>
+        <argsstring>(void)</argsstring>
+        <name>HW_EepromReload</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="return"><para>0, if the operation was successful.<linebreak/>
+ greater than 0, an error has occurred. <linebreak/>
+</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Reloads the EEPROM configuration information to ESC data registers. This is only required if EEPROM_EMULATION is enabled and no EEPROM content is created (CREATE_EEPROM_CONTENT== 0). This function shall copy the EEPROM reload information to the ESC EEPROM data register (0x508:0x50F/0x50B). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="496" column="8" bodyfile="mtb_xmc_ecat_eeprom.c" bodystart="128" bodyend="165" declfile="mtb_xmc_ecat.h" declline="496" declcolumn="8"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group__group__ecat__functions_1gad7f8ed3397c7d18204c7e2222d9e8f4f" prot="public" static="no">
+        <name>HW_EscReadDWord</name>
+        <param><defname>DWordValue</defname></param>
+        <param><defname>Address</defname></param>
+        <initializer>((DWordValue) = (UINT32)(((volatile UINT32 *)pEsc)[((Address)&gt;&gt;2)]))</initializer>
+        <briefdescription>
+<para>32Bit ESC read access. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="102" column="9" bodyfile="mtb_xmc_ecat.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__group__ecat__functions_1ga0e0231b50a4318b94d81baaa0eb7ab01" prot="public" static="no">
+        <name>HW_EscReadDWordIsr</name>
+        <param><defname>DWordValue</defname></param>
+        <param><defname>Address</defname></param>
+        <initializer><ref refid="group__group__ecat__functions_1gad7f8ed3397c7d18204c7e2222d9e8f4f" kindref="member">HW_EscReadDWord</ref>(DWordValue, Address)</initializer>
+        <briefdescription>
+<para>Interrupt specific 32Bit ESC read access. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="105" column="9" bodyfile="mtb_xmc_ecat.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__group__ecat__functions_1ga6a60cfacf47aa2e684a1f2fd64d90ea0" prot="public" static="no">
+        <name>HW_EscReadWord</name>
+        <param><defname>WordValue</defname></param>
+        <param><defname>Address</defname></param>
+        <initializer>((WordValue) = (((volatile UINT16 *)pEsc)[((Address)&gt;&gt;1)]))</initializer>
+        <briefdescription>
+<para>16Bit ESC read access. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="108" column="9" bodyfile="mtb_xmc_ecat.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__group__ecat__functions_1ga22b30ece8740139c5074147fb9248c09" prot="public" static="no">
+        <name>HW_EscReadWordIsr</name>
+        <param><defname>WordValue</defname></param>
+        <param><defname>Address</defname></param>
+        <initializer><ref refid="group__group__ecat__functions_1ga6a60cfacf47aa2e684a1f2fd64d90ea0" kindref="member">HW_EscReadWord</ref>(WordValue, Address)</initializer>
+        <briefdescription>
+<para>Interrupt specific 16Bit ESC read access. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="111" column="9" bodyfile="mtb_xmc_ecat.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__group__ecat__functions_1ga454b3202f9d2d5cc633c772791c5b3b3" prot="public" static="no">
+        <name>HW_EscReadByte</name>
+        <param><defname>ByteValue</defname></param>
+        <param><defname>Address</defname></param>
+        <initializer>((ByteValue) = (((volatile UINT8 *)pEsc)[(Address)]))</initializer>
+        <briefdescription>
+<para>8Bit ESC read access. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="114" column="9" bodyfile="mtb_xmc_ecat.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__group__ecat__functions_1ga6a95d317ee3f79bb59f6117c2b1c07ee" prot="public" static="no">
+        <name>HW_EscReadByteIsr</name>
+        <param><defname>ByteValue</defname></param>
+        <param><defname>Address</defname></param>
+        <initializer><ref refid="group__group__ecat__functions_1ga454b3202f9d2d5cc633c772791c5b3b3" kindref="member">HW_EscReadByte</ref>(ByteValue, Address)</initializer>
+        <briefdescription>
+<para>Interrupt specific 8Bit ESC read access. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="117" column="9" bodyfile="mtb_xmc_ecat.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__group__ecat__functions_1ga1ab0ed2e27bb87a165f124e3b713fd35" prot="public" static="no">
+        <name>HW_EscWriteDWord</name>
+        <param><defname>DWordValue</defname></param>
+        <param><defname>Address</defname></param>
+        <initializer>((((volatile UINT32 *)pEsc)[(Address&gt;&gt;2)]) = (DWordValue))</initializer>
+        <briefdescription>
+<para>16Bit ESC write access. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="120" column="9" bodyfile="mtb_xmc_ecat.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__group__ecat__functions_1ga9b59ade0d2564df89348e5ddc0d7020c" prot="public" static="no">
+        <name>HW_EscWriteDWordIsr</name>
+        <param><defname>DWordValue</defname></param>
+        <param><defname>Address</defname></param>
+        <initializer><ref refid="group__group__ecat__functions_1gaea1240badcb123931fc033c9f604a208" kindref="member">HW_EscWriteWord</ref>(DWordValue, Address)</initializer>
+        <briefdescription>
+<para>Interrupt specific 32Bit ESC write access. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="123" column="9" bodyfile="mtb_xmc_ecat.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__group__ecat__functions_1gaea1240badcb123931fc033c9f604a208" prot="public" static="no">
+        <name>HW_EscWriteWord</name>
+        <param><defname>WordValue</defname></param>
+        <param><defname>Address</defname></param>
+        <initializer>((((volatile UINT16 *)pEsc)[((Address)&gt;&gt;1)]) = (WordValue))</initializer>
+        <briefdescription>
+<para>16Bit ESC write access. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="126" column="9" bodyfile="mtb_xmc_ecat.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__group__ecat__functions_1gafef62bd1c5bb7eb88fa1d1091ba5d5f5" prot="public" static="no">
+        <name>HW_EscWriteWordIsr</name>
+        <param><defname>WordValue</defname></param>
+        <param><defname>Address</defname></param>
+        <initializer><ref refid="group__group__ecat__functions_1gaea1240badcb123931fc033c9f604a208" kindref="member">HW_EscWriteWord</ref>(WordValue, Address)</initializer>
+        <briefdescription>
+<para>Interrupt specific 16Bit ESC write access. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="129" column="9" bodyfile="mtb_xmc_ecat.h" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__group__ecat__functions_1ga67bea1a0991c9a9983d2b181f69dba19" prot="public" static="no">
+        <name>HW_EscWriteByte</name>
+        <param><defname>ByteValue</defname></param>
+        <param><defname>Address</defname></param>
+        <initializer>((((volatile UINT8 *)pEsc)[(Address)]) = (ByteValue))</initializer>
+        <briefdescription>
+<para>8Bit ESC write access. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="132" column="9" bodyfile="mtb_xmc_ecat.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__group__ecat__functions_1gafc277f5722201cba8a3fc7efe78476af" prot="public" static="no">
+        <name>HW_EscWriteByteIsr</name>
+        <param><defname>ByteValue</defname></param>
+        <param><defname>Address</defname></param>
+        <initializer><ref refid="group__group__ecat__functions_1ga67bea1a0991c9a9983d2b181f69dba19" kindref="member">HW_EscWriteByte</ref>(ByteValue, Address)</initializer>
+        <briefdescription>
+<para>Interrupt specific 8Bit ESC write access. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.h" line="135" column="9" bodyfile="mtb_xmc_ecat.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.9.2" xml:lang="en-US">
+  <compound refid="mtb__xmc__ecat__overview_8h" kind="file"><name>mtb_xmc_ecat_overview.h</name>
+  </compound>
+  <compound refid="mtb__xmc__ecat_8c" kind="file"><name>mtb_xmc_ecat.c</name>
+    <member refid="mtb__xmc__ecat_8c_1a14f3cad096419c632a2368208a408a68" kind="define"><name>MTB_XMC_ECAT_STATUS_SUCCESS</name></member>
+    <member refid="mtb__xmc__ecat_8c_1aa27f3fd66fd470d9913f9e40468aebfb" kind="define"><name>MTB_XMC_ECAT_STATUS_ERROR</name></member>
+    <member refid="mtb__xmc__ecat_8c_1ae5312095c4df2b5fd83ac1efaab8cdd9" kind="define"><name>MTB_XMC_ECAT_PRIORITY_VALID</name></member>
+    <member refid="mtb__xmc__ecat_8c_1a6fcd5493d4f778163cc505e694e23db8" kind="define"><name>MTB_XMC_ECAT_TIMER_PRIORITY_VALID</name></member>
+    <member refid="mtb__xmc__ecat_8c_1a068aff26e62b7a58416c08545769e3f1" kind="define"><name>MTB_XMC_ECAT_STATUS_VALID</name></member>
+    <member refid="mtb__xmc__ecat_8c_1a126165f8fdc07254b80efd514f43f863" kind="variable"><name>aEepromData</name></member>
+    <member refid="mtb__xmc__ecat_8c_1a590806a679f751f8def013c02fa783a9" kind="variable"><name>pEEPROM</name></member>
+    <member refid="mtb__xmc__ecat_8c_1a0fbde17334e3507fc31b72953a8059b8" kind="function"><name>process_app</name></member>
+    <member refid="group__group__ecat__functions_1ga8e87560251ba1d0b3ab4f410c94b8190" kind="function"><name>HW_Init</name></member>
+    <member refid="group__group__ecat__functions_1ga2560427ecfa14054fca4a426ab12bec5" kind="function"><name>HW_Release</name></member>
+    <member refid="group__group__ecat__functions_1ga5d87c1b0f55ff8e91eaf01fa50ad35b0" kind="function"><name>HW_RestartTarget</name></member>
+    <member refid="group__group__ecat__functions_1gaa242cdd50e00a5d4e3e33251c3d654d1" kind="function"><name>mtb_xmc_ecat_init</name></member>
+    <member refid="group__group__ecat__functions_1gaeda7038680e2fa58ece91f53974b05d5" kind="function"><name>mtb_xmc_enable_user_int</name></member>
+    <member refid="group__group__ecat__functions_1ga96efe3f2f7d04809de2c41dbe99b672e" kind="function"><name>mtb_xmc_disable_user_int</name></member>
+    <member refid="mtb__xmc__ecat_8c_1a0bc80272a1dd4d3af2eb5efdd5035ea1" kind="function"><name>ECAT0_0_IRQHandler</name></member>
+    <member refid="group__group__ecat__functions_1gaff04a03f4b620fa8b6b1a9f8fc34399d" kind="function"><name>ENABLE_ESC_INT</name></member>
+    <member refid="group__group__ecat__functions_1ga5b201ce6942f85e51d449673efc44332" kind="function"><name>DISABLE_ESC_INT</name></member>
+  </compound>
+  <compound refid="mtb__xmc__ecat_8h" kind="file"><name>mtb_xmc_ecat.h</name>
+    <member refid="group__group__ecat__macros_1ga4ae8b21e2dbc174805c97219497d5544" kind="define"><name>ECAT_TIMER_INC_P_MS</name></member>
+    <member refid="mtb__xmc__ecat_8h_1af0308783c4791453994da4e4219b7770" kind="define"><name>pEsc</name></member>
+    <member refid="group__group__ecat__functions_1gad7f8ed3397c7d18204c7e2222d9e8f4f" kind="define"><name>HW_EscReadDWord</name></member>
+    <member refid="group__group__ecat__functions_1ga0e0231b50a4318b94d81baaa0eb7ab01" kind="define"><name>HW_EscReadDWordIsr</name></member>
+    <member refid="group__group__ecat__functions_1ga6a60cfacf47aa2e684a1f2fd64d90ea0" kind="define"><name>HW_EscReadWord</name></member>
+    <member refid="group__group__ecat__functions_1ga22b30ece8740139c5074147fb9248c09" kind="define"><name>HW_EscReadWordIsr</name></member>
+    <member refid="group__group__ecat__functions_1ga454b3202f9d2d5cc633c772791c5b3b3" kind="define"><name>HW_EscReadByte</name></member>
+    <member refid="group__group__ecat__functions_1ga6a95d317ee3f79bb59f6117c2b1c07ee" kind="define"><name>HW_EscReadByteIsr</name></member>
+    <member refid="group__group__ecat__functions_1ga1ab0ed2e27bb87a165f124e3b713fd35" kind="define"><name>HW_EscWriteDWord</name></member>
+    <member refid="group__group__ecat__functions_1ga9b59ade0d2564df89348e5ddc0d7020c" kind="define"><name>HW_EscWriteDWordIsr</name></member>
+    <member refid="group__group__ecat__functions_1gaea1240badcb123931fc033c9f604a208" kind="define"><name>HW_EscWriteWord</name></member>
+    <member refid="group__group__ecat__functions_1gafef62bd1c5bb7eb88fa1d1091ba5d5f5" kind="define"><name>HW_EscWriteWordIsr</name></member>
+    <member refid="group__group__ecat__functions_1ga67bea1a0991c9a9983d2b181f69dba19" kind="define"><name>HW_EscWriteByte</name></member>
+    <member refid="group__group__ecat__functions_1gafc277f5722201cba8a3fc7efe78476af" kind="define"><name>HW_EscWriteByteIsr</name></member>
+    <member refid="mtb__xmc__ecat_8h_1a126165f8fdc07254b80efd514f43f863" kind="variable"><name>aEepromData</name></member>
+    <member refid="group__group__ecat__functions_1ga0126681297bcf1ef47e082ac5472f554" kind="function"><name>mtb_xmc_ecat_timer_stop_reset</name></member>
+    <member refid="group__group__ecat__functions_1gab91c48d69b3bf7f8082ec958f93a9a59" kind="function"><name>mtb_xmc_ecat_timer_start</name></member>
+    <member refid="group__group__ecat__functions_1gaa06b6c4b719e6c8535aa1cd525af5217" kind="function"><name>mtb_xmc_ecat_eeprom_init</name></member>
+    <member refid="group__group__ecat__functions_1gaa242cdd50e00a5d4e3e33251c3d654d1" kind="function"><name>mtb_xmc_ecat_init</name></member>
+    <member refid="group__group__ecat__functions_1ga9f19b7a29451a2be5bc5ce1d03541d66" kind="function"><name>HW_EscRead</name></member>
+    <member refid="group__group__ecat__functions_1ga6377e7c9fe76cb6b21db844e18a6f4c8" kind="function"><name>HW_EscReadIsr</name></member>
+    <member refid="group__group__ecat__functions_1gad76f93070d5d6df7295e9a758d90a691" kind="function"><name>HW_EscReadMbxMem</name></member>
+    <member refid="group__group__ecat__functions_1ga5f83e4f9f7954113562fc90a6e190b56" kind="function"><name>HW_EscWrite</name></member>
+    <member refid="group__group__ecat__functions_1gaa1b29bd56cb086914ba8b3115f05753f" kind="function"><name>HW_EscWriteIsr</name></member>
+    <member refid="group__group__ecat__functions_1ga12756fd515cfe789d80aff240bf64566" kind="function"><name>HW_EscWriteMbxMem</name></member>
+    <member refid="group__group__ecat__functions_1gabff9821bdaa25f4b8009ee02b819eab4" kind="function"><name>HW_GetALEventRegister</name></member>
+    <member refid="group__group__ecat__functions_1gac191bd48a54d61c8030558e3dd6b1675" kind="function"><name>HW_GetALEventRegister_Isr</name></member>
+    <member refid="group__group__ecat__functions_1gaff04a03f4b620fa8b6b1a9f8fc34399d" kind="function"><name>ENABLE_ESC_INT</name></member>
+    <member refid="group__group__ecat__functions_1ga5b201ce6942f85e51d449673efc44332" kind="function"><name>DISABLE_ESC_INT</name></member>
+    <member refid="group__group__ecat__functions_1gaeda7038680e2fa58ece91f53974b05d5" kind="function"><name>mtb_xmc_enable_user_int</name></member>
+    <member refid="group__group__ecat__functions_1ga96efe3f2f7d04809de2c41dbe99b672e" kind="function"><name>mtb_xmc_disable_user_int</name></member>
+    <member refid="group__group__ecat__functions_1gafd2e227187852d4c570a293358ffcf60" kind="function"><name>HW_GetTimer</name></member>
+    <member refid="group__group__ecat__functions_1ga78e91b358f044ab24c77aee66b46b15c" kind="function"><name>HW_ClearTimer</name></member>
+    <member refid="group__group__ecat__functions_1ga8e87560251ba1d0b3ab4f410c94b8190" kind="function"><name>HW_Init</name></member>
+    <member refid="group__group__ecat__functions_1ga2560427ecfa14054fca4a426ab12bec5" kind="function"><name>HW_Release</name></member>
+    <member refid="group__group__ecat__functions_1ga5d87c1b0f55ff8e91eaf01fa50ad35b0" kind="function"><name>HW_RestartTarget</name></member>
+    <member refid="group__group__ecat__functions_1gabf3c8c7637bd58f7543030f94033a537" kind="function"><name>HW_EepromRead</name></member>
+    <member refid="group__group__ecat__functions_1ga30b53dd5a74cc69be48690ef52aad451" kind="function"><name>HW_EepromWrite</name></member>
+    <member refid="group__group__ecat__functions_1ga549c3cd340478f3efc53d3e35fff5bd2" kind="function"><name>HW_EepromReload</name></member>
+  </compound>
+  <compound refid="mtb__xmc__ecat__eeprom_8c" kind="file"><name>mtb_xmc_ecat_eeprom.c</name>
+    <member refid="mtb__xmc__ecat__eeprom_8c_1a45c4c718406ce6d915fce2cb2d419033" kind="define"><name>EEPROM_READ_SIZE</name></member>
+    <member refid="mtb__xmc__ecat__eeprom_8c_1a126165f8fdc07254b80efd514f43f863" kind="variable"><name>aEepromData</name></member>
+    <member refid="mtb__xmc__ecat__eeprom_8c_1a590806a679f751f8def013c02fa783a9" kind="variable"><name>pEEPROM</name></member>
+    <member refid="mtb__xmc__ecat__eeprom_8c_1a796a8cc3ccb297311f3ff48925dc0ebf" kind="variable"><name>eeprom_context</name></member>
+    <member refid="group__group__ecat__functions_1gaa06b6c4b719e6c8535aa1cd525af5217" kind="function"><name>mtb_xmc_ecat_eeprom_init</name></member>
+    <member refid="group__group__ecat__functions_1gabf3c8c7637bd58f7543030f94033a537" kind="function"><name>HW_EepromRead</name></member>
+    <member refid="group__group__ecat__functions_1ga30b53dd5a74cc69be48690ef52aad451" kind="function"><name>HW_EepromWrite</name></member>
+    <member refid="group__group__ecat__functions_1ga549c3cd340478f3efc53d3e35fff5bd2" kind="function"><name>HW_EepromReload</name></member>
+  </compound>
+  <compound refid="mtb__xmc__ecat__timer_8c" kind="file"><name>mtb_xmc_ecat_timer.c</name>
+    <member refid="mtb__xmc__ecat__timer_8c_1afeb8bface87b0c2dfda1edc04ab73896" kind="define"><name>mtb_xmc_ecat_timer_isr</name></member>
+    <member refid="mtb__xmc__ecat__timer_8c_1ab3507a48ae247ff252738ca350810b21" kind="variable"><name>ticks</name></member>
+    <member refid="group__group__ecat__functions_1gab91c48d69b3bf7f8082ec958f93a9a59" kind="function"><name>mtb_xmc_ecat_timer_start</name></member>
+    <member refid="group__group__ecat__functions_1ga0126681297bcf1ef47e082ac5472f554" kind="function"><name>mtb_xmc_ecat_timer_stop_reset</name></member>
+    <member refid="group__group__ecat__functions_1gafd2e227187852d4c570a293358ffcf60" kind="function"><name>HW_GetTimer</name></member>
+    <member refid="group__group__ecat__functions_1ga78e91b358f044ab24c77aee66b46b15c" kind="function"><name>HW_ClearTimer</name></member>
+  </compound>
+  <compound refid="README_8doxygen_8md" kind="file"><name>README.doxygen.md</name>
+  </compound>
+  <compound refid="group__group__ecat__general" kind="group"><name>group_ecat_general</name>
+  </compound>
+  <compound refid="group__group__ecat__macros" kind="group"><name>group_ecat_macros</name>
+    <member refid="group__group__ecat__macros_1ga4ae8b21e2dbc174805c97219497d5544" kind="define"><name>ECAT_TIMER_INC_P_MS</name></member>
+  </compound>
+  <compound refid="group__group__ecat__functions" kind="group"><name>group_ecat_functions</name>
+    <member refid="group__group__ecat__functions_1ga0126681297bcf1ef47e082ac5472f554" kind="function"><name>mtb_xmc_ecat_timer_stop_reset</name></member>
+    <member refid="group__group__ecat__functions_1gab91c48d69b3bf7f8082ec958f93a9a59" kind="function"><name>mtb_xmc_ecat_timer_start</name></member>
+    <member refid="group__group__ecat__functions_1gaa06b6c4b719e6c8535aa1cd525af5217" kind="function"><name>mtb_xmc_ecat_eeprom_init</name></member>
+    <member refid="group__group__ecat__functions_1gaa242cdd50e00a5d4e3e33251c3d654d1" kind="function"><name>mtb_xmc_ecat_init</name></member>
+    <member refid="group__group__ecat__functions_1ga9f19b7a29451a2be5bc5ce1d03541d66" kind="function"><name>HW_EscRead</name></member>
+    <member refid="group__group__ecat__functions_1ga6377e7c9fe76cb6b21db844e18a6f4c8" kind="function"><name>HW_EscReadIsr</name></member>
+    <member refid="group__group__ecat__functions_1gad76f93070d5d6df7295e9a758d90a691" kind="function"><name>HW_EscReadMbxMem</name></member>
+    <member refid="group__group__ecat__functions_1ga5f83e4f9f7954113562fc90a6e190b56" kind="function"><name>HW_EscWrite</name></member>
+    <member refid="group__group__ecat__functions_1gaa1b29bd56cb086914ba8b3115f05753f" kind="function"><name>HW_EscWriteIsr</name></member>
+    <member refid="group__group__ecat__functions_1ga12756fd515cfe789d80aff240bf64566" kind="function"><name>HW_EscWriteMbxMem</name></member>
+    <member refid="group__group__ecat__functions_1gabff9821bdaa25f4b8009ee02b819eab4" kind="function"><name>HW_GetALEventRegister</name></member>
+    <member refid="group__group__ecat__functions_1gac191bd48a54d61c8030558e3dd6b1675" kind="function"><name>HW_GetALEventRegister_Isr</name></member>
+    <member refid="group__group__ecat__functions_1gaff04a03f4b620fa8b6b1a9f8fc34399d" kind="function"><name>ENABLE_ESC_INT</name></member>
+    <member refid="group__group__ecat__functions_1ga5b201ce6942f85e51d449673efc44332" kind="function"><name>DISABLE_ESC_INT</name></member>
+    <member refid="group__group__ecat__functions_1gaeda7038680e2fa58ece91f53974b05d5" kind="function"><name>mtb_xmc_enable_user_int</name></member>
+    <member refid="group__group__ecat__functions_1ga96efe3f2f7d04809de2c41dbe99b672e" kind="function"><name>mtb_xmc_disable_user_int</name></member>
+    <member refid="group__group__ecat__functions_1gafd2e227187852d4c570a293358ffcf60" kind="function"><name>HW_GetTimer</name></member>
+    <member refid="group__group__ecat__functions_1ga78e91b358f044ab24c77aee66b46b15c" kind="function"><name>HW_ClearTimer</name></member>
+    <member refid="group__group__ecat__functions_1ga8e87560251ba1d0b3ab4f410c94b8190" kind="function"><name>HW_Init</name></member>
+    <member refid="group__group__ecat__functions_1ga2560427ecfa14054fca4a426ab12bec5" kind="function"><name>HW_Release</name></member>
+    <member refid="group__group__ecat__functions_1ga5d87c1b0f55ff8e91eaf01fa50ad35b0" kind="function"><name>HW_RestartTarget</name></member>
+    <member refid="group__group__ecat__functions_1gabf3c8c7637bd58f7543030f94033a537" kind="function"><name>HW_EepromRead</name></member>
+    <member refid="group__group__ecat__functions_1ga30b53dd5a74cc69be48690ef52aad451" kind="function"><name>HW_EepromWrite</name></member>
+    <member refid="group__group__ecat__functions_1ga549c3cd340478f3efc53d3e35fff5bd2" kind="function"><name>HW_EepromReload</name></member>
+    <member refid="group__group__ecat__functions_1gad7f8ed3397c7d18204c7e2222d9e8f4f" kind="define"><name>HW_EscReadDWord</name></member>
+    <member refid="group__group__ecat__functions_1ga0e0231b50a4318b94d81baaa0eb7ab01" kind="define"><name>HW_EscReadDWordIsr</name></member>
+    <member refid="group__group__ecat__functions_1ga6a60cfacf47aa2e684a1f2fd64d90ea0" kind="define"><name>HW_EscReadWord</name></member>
+    <member refid="group__group__ecat__functions_1ga22b30ece8740139c5074147fb9248c09" kind="define"><name>HW_EscReadWordIsr</name></member>
+    <member refid="group__group__ecat__functions_1ga454b3202f9d2d5cc633c772791c5b3b3" kind="define"><name>HW_EscReadByte</name></member>
+    <member refid="group__group__ecat__functions_1ga6a95d317ee3f79bb59f6117c2b1c07ee" kind="define"><name>HW_EscReadByteIsr</name></member>
+    <member refid="group__group__ecat__functions_1ga1ab0ed2e27bb87a165f124e3b713fd35" kind="define"><name>HW_EscWriteDWord</name></member>
+    <member refid="group__group__ecat__functions_1ga9b59ade0d2564df89348e5ddc0d7020c" kind="define"><name>HW_EscWriteDWordIsr</name></member>
+    <member refid="group__group__ecat__functions_1gaea1240badcb123931fc033c9f604a208" kind="define"><name>HW_EscWriteWord</name></member>
+    <member refid="group__group__ecat__functions_1gafef62bd1c5bb7eb88fa1d1091ba5d5f5" kind="define"><name>HW_EscWriteWordIsr</name></member>
+    <member refid="group__group__ecat__functions_1ga67bea1a0991c9a9983d2b181f69dba19" kind="define"><name>HW_EscWriteByte</name></member>
+    <member refid="group__group__ecat__functions_1gafc277f5722201cba8a3fc7efe78476af" kind="define"><name>HW_EscWriteByteIsr</name></member>
+  </compound>
+  <compound refid="md_README_doxygen" kind="page"><name>md_README_doxygen</name>
+  </compound>
+  <compound refid="dir_fbb4c41eda71fd4bfda87d6a7b2d4214" kind="dir"><name>docs_src</name>
+  </compound>
+  <compound refid="indexpage" kind="page"><name>index</name>
+  </compound>
+</doxygenindex>

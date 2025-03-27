@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="group__group__ecat__general" kind="group">
+    <compoundname>group_ecat_general</compoundname>
+    <title>EtherCAT (ECAT)</title>
+    <innergroup refid="group__group__ecat__macros">Macros</innergroup>
+    <innergroup refid="group__group__ecat__functions">API Prototypes</innergroup>
+    <briefdescription>
+<para>EtherCAT Low level driver for XMC4800/XMC4300 series. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>EtherCAT is an Ethernet-based fieldbus system. The EtherCAT Slave Controller (ECAT) read the data addressed to them while the telegram passes through the device. An EtherCAT Slave Controller (ESC) takes care of the EtherCAT communication as an interface between the EtherCAT fieldbus and the slave application. EtherCAT uses standard IEEE 802.3 Ethernet frames, thus a standard network controller can be used and no special hardware is required on master side. EtherCAT has a reserved EtherType of 0x88A4 that distinguishes it from other Ethernet frames. Thus, EtherCAT can run in parallel to other Ethernet protocols. EtherCAT does not require the IP protocol, however it can be encapsulated in IP/UDP. The EtherCAT Slave Controller processes the frame in hardware. Thus, communication performance is independent from processor power.</para>
+<para>The XMC_ECAT low level driver provides functions to configure and initialize the ECAT hardware peripheral. For EtherCAT stack integration, the necessary hardware accees layer APIs shall be explicitly implemented depending upon the stack provider. The XMC_ECAT lld layer provides only the hardware initialization functions for start up and basic functionalities. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

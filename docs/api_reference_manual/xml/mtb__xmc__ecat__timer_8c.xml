@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="mtb__xmc__ecat__timer_8c" kind="file" language="C++">
+    <compoundname>mtb_xmc_ecat_timer.c</compoundname>
+    <includes refid="mtb__xmc__ecat_8h" local="yes">mtb_xmc_ecat.h</includes>
+    <includes local="yes">xmc_ccu4.h</includes>
+    <includes local="yes">ecatappl.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>mtb_xmc_ecat_timer.c</label>
+        <link refid="mtb__xmc__ecat__timer_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ecatappl.h</label>
+      </node>
+      <node id="2">
+        <label>xmc_ccu4.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="mtb__xmc__ecat__timer_8c_1afeb8bface87b0c2dfda1edc04ab73896" prot="public" static="no">
+        <name>mtb_xmc_ecat_timer_isr</name>
+        <initializer>MTB_XMC_ECAT_Timer_INTERRUPT_HANDLER</initializer>
+        <briefdescription>
+<para>Timer&apos;s interrupt handler definition. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat_timer.c" line="39" column="9" bodyfile="mtb_xmc_ecat_timer.c" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="mtb__xmc__ecat__timer_8c_1ab3507a48ae247ff252738ca350810b21" prot="public" static="yes" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t ticks</definition>
+        <argsstring></argsstring>
+        <name>ticks</name>
+        <initializer>= 0U</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat_timer.c" line="41" column="17" bodyfile="mtb_xmc_ecat_timer.c" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__group__ecat__functions_1gab91c48d69b3bf7f8082ec958f93a9a59" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtb_xmc_ecat_timer_start</definition>
+        <argsstring>(void)</argsstring>
+        <name>mtb_xmc_ecat_timer_start</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Description: </title><para>This function starts a timer for the EtherCAT. <linebreak/>
+ </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat_timer.c" line="46" column="6" bodyfile="mtb_xmc_ecat_timer.c" bodystart="46" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1ga0126681297bcf1ef47e082ac5472f554" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtb_xmc_ecat_timer_stop_reset</definition>
+        <argsstring>(void)</argsstring>
+        <name>mtb_xmc_ecat_timer_stop_reset</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Description: </title><para>This function stops and resets a timer for the EtherCAT. <linebreak/>
+ </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat_timer.c" line="52" column="6" bodyfile="mtb_xmc_ecat_timer.c" bodystart="52" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1gafd2e227187852d4c570a293358ffcf60" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT32</type>
+        <definition>UINT32 HW_GetTimer</definition>
+        <argsstring>(void)</argsstring>
+        <name>HW_GetTimer</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="return"><para>Current timer value <linebreak/>
+</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Reads the hardware timer value in ticks. The timer ticks value (increments / ms) is defined in ECAT_TIMER_INC_P_MS. This function is required, if no timer interrupt is supported (ECAT_TIMER_INT = 0) and to calculate the bus cycle time. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat_timer.c" line="70" column="8" bodyfile="mtb_xmc_ecat_timer.c" bodystart="70" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1ga78e91b358f044ab24c77aee66b46b15c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void HW_ClearTimer</definition>
+        <argsstring>(void)</argsstring>
+        <name>HW_ClearTimer</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Clears the hardware timer value. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat_timer.c" line="76" column="6" bodyfile="mtb_xmc_ecat_timer.c" bodystart="76" bodyend="79"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="version"><para>1.0.0 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">/*******************************************************************************</highlight></codeline>
+<codeline lineno="30"><highlight class="comment">*<sp/>HEADER<sp/>FILES</highlight></codeline>
+<codeline lineno="31"><highlight class="comment">*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;mtb_xmc_ecat.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;xmc_ccu4.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ecatappl.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">/*******************************************************************************</highlight></codeline>
+<codeline lineno="37"><highlight class="comment">*<sp/>MACROS</highlight></codeline>
+<codeline lineno="38"><highlight class="comment">*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>mtb_xmc_ecat_timer_isr<sp/>MTB_XMC_ECAT_Timer_INTERRUPT_HANDLER<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint32_t<sp/>ticks<sp/>=<sp/>0U;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">/*******************************************************************************</highlight></codeline>
+<codeline lineno="44"><highlight class="comment">*<sp/>Functions</highlight></codeline>
+<codeline lineno="45"><highlight class="comment">*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__group__ecat__functions_1gab91c48d69b3bf7f8082ec958f93a9a59" kindref="member">mtb_xmc_ecat_timer_start</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>XMC_CCU4_SLICE_StartTimer(MTB_XMC_ECAT_Timer_HW);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__group__ecat__functions_1ga0126681297bcf1ef47e082ac5472f554" kindref="member">mtb_xmc_ecat_timer_stop_reset</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>XMC_CCU4_SLICE_StopTimer(MTB_XMC_ECAT_Timer_HW);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>ticks<sp/>=<sp/>0U;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>ECAT<sp/>slave<sp/>timer<sp/>interrupt<sp/>handler<sp/>function<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>mtb_xmc_ecat_timer_isr(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>ticks++;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#if<sp/>defined<sp/>(ECAT_TIMER_INT)<sp/>&amp;&amp;<sp/>(ECAT_TIMER_INT<sp/>==<sp/>1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>ECAT_CheckTimer();</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#endif<sp/></highlight><highlight class="comment">/*<sp/>ECAT_TIMER_INT<sp/>==<sp/>1<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Beckhoff<sp/>Hw<sp/>abstraction<sp/>layer<sp/>interface<sp/>API<sp/>to<sp/>get<sp/>the<sp/>current<sp/>timer<sp/>value<sp/>in<sp/>ticks<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal">UINT32<sp/><ref refid="group__group__ecat__functions_1gafd2e227187852d4c570a293358ffcf60" kindref="member">HW_GetTimer</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(UINT32)ticks;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__group__ecat__functions_1ga78e91b358f044ab24c77aee66b46b15c" kindref="member">HW_ClearTimer</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>ticks<sp/>=<sp/>0U;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="mtb_xmc_ecat_timer.c"/>
+  </compounddef>
+</doxygen>

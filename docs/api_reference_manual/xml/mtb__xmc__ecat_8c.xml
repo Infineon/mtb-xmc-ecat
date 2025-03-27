@@ -1,0 +1,571 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="mtb__xmc__ecat_8c" kind="file" language="C++">
+    <compoundname>mtb_xmc_ecat.c</compoundname>
+    <includes refid="mtb__xmc__ecat_8h" local="yes">mtb_xmc_ecat.h</includes>
+    <includes local="yes">ecatappl.h</includes>
+    <includes local="yes">applInterface.h</includes>
+    <includes local="yes">XMC_ESCObjects.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>mtb_xmc_ecat.c</label>
+        <link refid="mtb__xmc__ecat_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>XMC_ESCObjects.h</label>
+      </node>
+      <node id="3">
+        <label>applInterface.h</label>
+      </node>
+      <node id="2">
+        <label>ecatappl.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="mtb__xmc__ecat_8c_1a14f3cad096419c632a2368208a408a68" prot="public" static="no">
+        <name>MTB_XMC_ECAT_STATUS_SUCCESS</name>
+        <initializer>(0U)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.c" line="48" column="9" bodyfile="mtb_xmc_ecat.c" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="mtb__xmc__ecat_8c_1aa27f3fd66fd470d9913f9e40468aebfb" prot="public" static="no">
+        <name>MTB_XMC_ECAT_STATUS_ERROR</name>
+        <initializer>(1U)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.c" line="49" column="9" bodyfile="mtb_xmc_ecat.c" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="mtb__xmc__ecat_8c_1ae5312095c4df2b5fd83ac1efaab8cdd9" prot="public" static="no">
+        <name>MTB_XMC_ECAT_PRIORITY_VALID</name>
+        <param><defname>priority</defname></param>
+        <initializer>((0U &lt;= (priority)) &amp;&amp; (63U &gt;= (priority)))</initializer>
+        <briefdescription>
+<para>Parameter check macros. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.c" line="53" column="9" bodyfile="mtb_xmc_ecat.c" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="mtb__xmc__ecat_8c_1a6fcd5493d4f778163cc505e694e23db8" prot="public" static="no">
+        <name>MTB_XMC_ECAT_TIMER_PRIORITY_VALID</name>
+        <param><defname>timer_priority</defname></param>
+        <initializer>((0U &lt;= (timer_priority)) &amp;&amp; (63U &gt;= (timer_priority)))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.c" line="54" column="9" bodyfile="mtb_xmc_ecat.c" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="mtb__xmc__ecat_8c_1a068aff26e62b7a58416c08545769e3f1" prot="public" static="no">
+        <name>MTB_XMC_ECAT_STATUS_VALID</name>
+        <param><defname>status</defname></param>
+        <initializer>(0U == (status))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.c" line="55" column="9" bodyfile="mtb_xmc_ecat.c" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="mtb__xmc__ecat_8c_1a126165f8fdc07254b80efd514f43f863" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t aEepromData[]</definition>
+        <argsstring>[]</argsstring>
+        <name>aEepromData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.c" line="42" column="16" declfile="mtb_xmc_ecat.c" declline="42" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="variable" id="mtb__xmc__ecat_8c_1a590806a679f751f8def013c02fa783a9" prot="public" static="no" mutable="no">
+        <type>UINT8 *</type>
+        <definition>UINT8* pEEPROM</definition>
+        <argsstring></argsstring>
+        <name>pEEPROM</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.c" line="43" column="15" declfile="mtb_xmc_ecat.c" declline="43" declcolumn="15"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="mtb__xmc__ecat_8c_1a0fbde17334e3507fc31b72953a8059b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>__WEAK void</type>
+        <definition>__WEAK void process_app</definition>
+        <argsstring>(TOBJ7000 *OUT_GENERIC, TOBJ6000 *IN_GENERIC)</argsstring>
+        <name>process_app</name>
+        <param>
+          <type>TOBJ7000 *</type>
+          <declname>OUT_GENERIC</declname>
+        </param>
+        <param>
+          <type>TOBJ6000 *</type>
+          <declname>IN_GENERIC</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.c" line="60" column="13" bodyfile="mtb_xmc_ecat.c" bodystart="60" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1ga8e87560251ba1d0b3ab4f410c94b8190" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT16</type>
+        <definition>UINT16 HW_Init</definition>
+        <argsstring>(void)</argsstring>
+        <name>HW_Init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="return"><para>0 if initialization was successful,<linebreak/>
+ Else, if error has occurred while initialization <linebreak/>
+</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Initializes the host controller, process data interface (PDI) and allocates resources which are required for hardware access. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.c" line="68" column="8" bodyfile="mtb_xmc_ecat.c" bodystart="68" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1ga2560427ecfa14054fca4a426ab12bec5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>__WEAK void</type>
+        <definition>__WEAK void HW_Release</definition>
+        <argsstring>(void)</argsstring>
+        <name>HW_Release</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Release allocated reserved resources. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.c" line="159" column="13" bodyfile="mtb_xmc_ecat.c" bodystart="159" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1ga5d87c1b0f55ff8e91eaf01fa50ad35b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>__WEAK void</type>
+        <definition>__WEAK void HW_RestartTarget</definition>
+        <argsstring>(void)</argsstring>
+        <name>HW_RestartTarget</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Resets the hardware. This function is only required if BOOTSTRAPMODE_SUPPORTED is set. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.c" line="165" column="13" bodyfile="mtb_xmc_ecat.c" bodystart="165" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1gaa242cdd50e00a5d4e3e33251c3d654d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t mtb_xmc_ecat_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>mtb_xmc_ecat_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="return"><para>Status 0, if the operation was successful.<linebreak/>
+ greater than 0, an error has occurred.</para>
+</simplesect>
+<simplesect kind="par"><title>Description: </title><para>This function initializes the EtherCAT using EEPROM, timer, ECAT slave hardware, and generic slave stack initialization functions. <linebreak/>
+ </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.c" line="171" column="10" bodyfile="mtb_xmc_ecat.c" bodystart="171" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1gaeda7038680e2fa58ece91f53974b05d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>__WEAK void</type>
+        <definition>__WEAK void mtb_xmc_enable_user_int</definition>
+        <argsstring>(void)</argsstring>
+        <name>mtb_xmc_enable_user_int</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>This routine is called from ECAT_APP on request of SSC stack once specific EtherCAT interrupts (sync1/sync0) need to be enabled. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.c" line="201" column="13" bodyfile="mtb_xmc_ecat.c" bodystart="201" bodyend="203"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1ga96efe3f2f7d04809de2c41dbe99b672e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>__WEAK void</type>
+        <definition>__WEAK void mtb_xmc_disable_user_int</definition>
+        <argsstring>(void)</argsstring>
+        <name>mtb_xmc_disable_user_int</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>This routine is called from ECAT_APP on request of SSC stack once specific EtherCAT interrupts (sync1/sync0) need to be disabled. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.c" line="207" column="13" bodyfile="mtb_xmc_ecat.c" bodystart="207" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="function" id="mtb__xmc__ecat_8c_1a0bc80272a1dd4d3af2eb5efdd5035ea1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ECAT0_0_IRQHandler</definition>
+        <argsstring>(void)</argsstring>
+        <name>ECAT0_0_IRQHandler</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.c" line="213" column="6" bodyfile="mtb_xmc_ecat.c" bodystart="213" bodyend="216"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1gaff04a03f4b620fa8b6b1a9f8fc34399d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ENABLE_ESC_INT</definition>
+        <argsstring>(void)</argsstring>
+        <name>ENABLE_ESC_INT</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Function to enable the XMC EtherCAT slave controller interrupt. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.c" line="219" column="6" bodyfile="mtb_xmc_ecat.c" bodystart="219" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1ga5b201ce6942f85e51d449673efc44332" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void DISABLE_ESC_INT</definition>
+        <argsstring>(void)</argsstring>
+        <name>DISABLE_ESC_INT</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Returns</title><para>None</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Function to disable the XMC EtherCAT slave controller interrupt. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat.c" line="229" column="6" bodyfile="mtb_xmc_ecat.c" bodystart="229" bodyend="242"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="version"><para>1.0.0 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">/*******************************************************************************</highlight></codeline>
+<codeline lineno="30"><highlight class="comment">*<sp/>HEADER<sp/>FILES</highlight></codeline>
+<codeline lineno="31"><highlight class="comment">*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;mtb_xmc_ecat.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ecatappl.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;applInterface.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;XMC_ESCObjects.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">/*******************************************************************************</highlight></codeline>
+<codeline lineno="39"><highlight class="comment">*<sp/>Global<sp/>variables</highlight></codeline>
+<codeline lineno="40"><highlight class="comment">*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Extern<sp/>declarations<sp/>for<sp/>Beckhoff<sp/>SSC<sp/>functions<sp/>and<sp/>variables<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint8_t<sp/>aEepromData[];</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>UINT8<sp/>*<sp/>pEEPROM;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">/*******************************************************************************</highlight></codeline>
+<codeline lineno="46"><highlight class="comment">*<sp/>MACROS</highlight></codeline>
+<codeline lineno="47"><highlight class="comment">*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MTB_XMC_ECAT_STATUS_SUCCESS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0U)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MTB_XMC_ECAT_STATUS_ERROR<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(1U)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MTB_XMC_ECAT_PRIORITY_VALID(priority)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((0U<sp/>&lt;=<sp/>(priority))<sp/>&amp;&amp;<sp/>(63U<sp/>&gt;=<sp/>(priority)))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MTB_XMC_ECAT_TIMER_PRIORITY_VALID(timer_priority)<sp/><sp/><sp/><sp/>((0U<sp/>&lt;=<sp/>(timer_priority))<sp/>&amp;&amp;<sp/>(63U<sp/>&gt;=<sp/>(timer_priority)))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MTB_XMC_ECAT_STATUS_VALID(status)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0U<sp/>==<sp/>(status))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">/*******************************************************************************</highlight></codeline>
+<codeline lineno="58"><highlight class="comment">*<sp/>API<sp/>IMPLEMENTATION</highlight></codeline>
+<codeline lineno="59"><highlight class="comment">*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal">__WEAK<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>process_app(TOBJ7000<sp/>*<sp/>OUT_GENERIC,<sp/>TOBJ6000<sp/>*<sp/>IN_GENERIC)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)OUT_GENERIC;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)IN_GENERIC;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>EtherCAT<sp/>Beckhoff<sp/>HW<sp/>abstraction<sp/>layer<sp/>interface<sp/>API<sp/>to<sp/>initialize<sp/>XMC<sp/>ESC<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal">UINT16<sp/><ref refid="group__group__ecat__functions_1ga8e87560251ba1d0b3ab4f410c94b8190" kindref="member">HW_Init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>prior_level_ecat<sp/>=<sp/>0U;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>prior_level_timer<sp/>=<sp/>0U;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT16<sp/>status<sp/>=<sp/>MTB_XMC_ECAT_STATUS_ERROR;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>EEPROM<sp/>interface<sp/>API<sp/>registration<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>pEEPROM<sp/>=<sp/>&amp;aEepromData[0U];</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>EtherCAT<sp/>slave<sp/>enable<sp/>and<sp/>intialization<sp/>using<sp/>LLD<sp/>function<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>XMC_ECAT_Init((XMC_ECAT_CONFIG_t<sp/>*)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)aEepromData);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p0_link_status();</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p0_rxd3();</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p0_rxd2();</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p0_rxd1();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p0_rxd0();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p0_rx_dv();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p0_rx_clk();</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p0_rx_err();</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p0_tx_clk();</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#if<sp/>defined<sp/>(MTB_XMC_ECAT_PORT1_ENABLED)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p1_link_status();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p1_rxd3();</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p1_rxd2();</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p1_rxd1();</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p1_rxd0();</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p1_rx_dv();</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p1_rx_clk();</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p1_rx_err();</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p1_tx_clk();</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#endif<sp/></highlight><highlight class="comment">/*<sp/>MTB_XMC_ECAT_PORT1_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_ecat_mdio();</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>MTB_XMC_ECAT_Initialization();</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p0_txd3();</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p0_txd2();</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p0_txd1();</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p0_txd0();</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p0_tx_ena();</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#if<sp/>defined<sp/>(MTB_XMC_ECAT_PORT1_ENABLED)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p1_txd3();</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p1_txd2();</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p1_txd1();</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p1_txd0();</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p1_tx_ena();</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#endif<sp/></highlight><highlight class="comment">/*<sp/>MTB_XMC_ECAT_PORT1_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_ecat_phy_clk25();</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_ecat_mclk();</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p0_led_link_act();</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#if<sp/>defined<sp/>(MTB_XMC_ECAT_PORT1_ENABLED)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_p1_led_link_act();</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#endif<sp/></highlight><highlight class="comment">/*<sp/>MTB_XMC_ECAT_PORT1_ENABLED<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_ecat_led_run();</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_ecat_led_err();</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_init_ecat_phy_reset();</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>prior_level_ecat<sp/>=<sp/>NVIC_EncodePriority(NVIC_GetPriorityGrouping(),</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MTB_XMC_ECAT_IRQN_PRIORITY,</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0U);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>XMC_ASSERT(</highlight><highlight class="stringliteral">&quot;MTB_XMC_ECAT<sp/>priority<sp/>level:<sp/>priority<sp/>is<sp/>not<sp/>valid\n&quot;</highlight><highlight class="normal">,<sp/>MTB_XMC_ECAT_PRIORITY_VALID(prior_level_ecat));</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>prior_level_timer<sp/>=<sp/>NVIC_EncodePriority(NVIC_GetPriorityGrouping(),</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MTB_XMC_ECAT_TIMER_IRQN_PRIORITY,</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0U);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>XMC_ASSERT(</highlight><highlight class="stringliteral">&quot;MTB_XMC_ECAT_TIMER<sp/>priority<sp/>level:<sp/>priority<sp/>is<sp/>not<sp/>valid\n&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MTB_XMC_ECAT_TIMER_PRIORITY_VALID(prior_level_timer));</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((prior_level_ecat<sp/>==<sp/>MTB_XMC_ECAT_IRQN_PRIORITY)<sp/>&amp;&amp;<sp/>(prior_level_timer<sp/>==<sp/>MTB_XMC_ECAT_TIMER_IRQN_PRIORITY))</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>ECAT<sp/>interrupt<sp/>priority<sp/>settings<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NVIC_SetPriority(MTB_XMC_ECAT_IRQN,<sp/>prior_level_ecat);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>ECAT<sp/>timer<sp/>interrupt<sp/>priority<sp/>settings<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NVIC_SetPriority(MTB_XMC_ECAT_Timer_IRQN,<sp/>prior_level_timer);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>EtherCAT<sp/>slave<sp/>interrupt<sp/>enable<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__group__ecat__functions_1gaff04a03f4b620fa8b6b1a9f8fc34399d" kindref="member">ENABLE_ESC_INT</ref>();</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/>MTB_XMC_ECAT_STATUS_SUCCESS;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(status);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Beckhoff<sp/>Hw<sp/>abstraction<sp/>layer<sp/>interface<sp/>API<sp/>to<sp/>release<sp/>the<sp/>consumed<sp/>resources<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal">__WEAK<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__group__ecat__functions_1ga2560427ecfa14054fca4a426ab12bec5" kindref="member">HW_Release</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="160"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Beckhoff<sp/>Hw<sp/>abstraction<sp/>layer<sp/>interface<sp/>API<sp/>to<sp/>reset<sp/>the<sp/>XMC<sp/>ECAT<sp/>module<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal">__WEAK<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__group__ecat__functions_1ga5d87c1b0f55ff8e91eaf01fa50ad35b0" kindref="member">HW_RestartTarget</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="166"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>EtherCAT<sp/>initialization<sp/>function<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal">uint32_t<sp/><ref refid="group__group__ecat__functions_1gaa242cdd50e00a5d4e3e33251c3d654d1" kindref="member">mtb_xmc_ecat_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="172"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>status<sp/>=<sp/>MTB_XMC_ECAT_STATUS_ERROR;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__group__ecat__functions_1gaa06b6c4b719e6c8535aa1cd525af5217" kindref="member">mtb_xmc_ecat_eeprom_init</ref>();</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>status<sp/>=<sp/><ref refid="group__group__ecat__functions_1ga8e87560251ba1d0b3ab4f410c94b8190" kindref="member">HW_Init</ref>();</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>XMC_ASSERT(</highlight><highlight class="stringliteral">&quot;MTB_XMC_ECAT<sp/>HW_Init<sp/>status:<sp/>HW_Init<sp/>returns<sp/>error<sp/>status\n&quot;</highlight><highlight class="normal">,<sp/>MTB_XMC_ECAT_STATUS_VALID(status));</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Call<sp/>Beckhoff<sp/>HW<sp/>abstraction<sp/>layer<sp/>API<sp/>to<sp/>start<sp/>the<sp/>stack<sp/>interface<sp/>initialization*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/>(uint32_t)MTB_XMC_ECAT_STATUS_SUCCESS)</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/>MainInit();</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>XMC_ASSERT(</highlight><highlight class="stringliteral">&quot;MTB_XMC_ECAT<sp/>MainInit<sp/>status:<sp/>MainInit<sp/>returns<sp/>error<sp/>status\n&quot;</highlight><highlight class="normal">,<sp/>MTB_XMC_ECAT_STATUS_VALID(status));</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status<sp/>==<sp/>(uint32_t)MTB_XMC_ECAT_STATUS_SUCCESS)</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pAPPL_EEPROM_Reload<sp/>=<sp/><ref refid="group__group__ecat__functions_1ga549c3cd340478f3efc53d3e35fff5bd2" kindref="member">HW_EepromReload</ref>;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pAPPL_EEPROM_Write<sp/><sp/>=<sp/><ref refid="group__group__ecat__functions_1ga30b53dd5a74cc69be48690ef52aad451" kindref="member">HW_EepromWrite</ref>;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Start<sp/>the<sp/>1<sp/>millisec<sp/>timer<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__group__ecat__functions_1gab91c48d69b3bf7f8082ec958f93a9a59" kindref="member">mtb_xmc_ecat_timer_start</ref>();</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(status);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Enabling<sp/>of<sp/>user<sp/>specific<sp/>EtherCAT<sp/>Interrupt<sp/>Routines.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal">__WEAK<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__group__ecat__functions_1gaeda7038680e2fa58ece91f53974b05d5" kindref="member">mtb_xmc_enable_user_int</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="202"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Disabling<sp/>of<sp/>user<sp/>specific<sp/>EtherCAT<sp/>Interrupt<sp/>Routines.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal">__WEAK<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__group__ecat__functions_1ga96efe3f2f7d04809de2c41dbe99b672e" kindref="member">mtb_xmc_disable_user_int</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="208"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="209"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>ECAT<sp/>slave<sp/>interrupt<sp/>handler<sp/>function<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ECAT0_0_IRQHandler(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="214"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/>PDI_Isr();</highlight></codeline>
+<codeline lineno="216"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__group__ecat__functions_1gaff04a03f4b620fa8b6b1a9f8fc34399d" kindref="member">ENABLE_ESC_INT</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="220"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>NVIC_ClearPendingIRQ(MTB_XMC_ECAT_IRQN);</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>NVIC_EnableIRQ(MTB_XMC_ECAT_IRQN);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__group__ecat__functions_1gaeda7038680e2fa58ece91f53974b05d5" kindref="member">mtb_xmc_enable_user_int</ref>();</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/>NVIC_ClearPendingIRQ(MTB_XMC_ECAT_Timer_IRQN);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>NVIC_EnableIRQ(MTB_XMC_ECAT_Timer_IRQN);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__group__ecat__functions_1ga5b201ce6942f85e51d449673efc44332" kindref="member">DISABLE_ESC_INT</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="230"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>ics;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>ics<sp/>=<sp/>XMC_EnterCriticalSection();</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__group__ecat__functions_1ga96efe3f2f7d04809de2c41dbe99b672e" kindref="member">mtb_xmc_disable_user_int</ref>();</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>NVIC_DisableIRQ(MTB_XMC_ECAT_IRQN);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/>NVIC_ClearPendingIRQ(MTB_XMC_ECAT_IRQN);</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>NVIC_DisableIRQ(MTB_XMC_ECAT_Timer_IRQN);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>NVIC_ClearPendingIRQ(MTB_XMC_ECAT_Timer_IRQN);</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>XMC_ExitCriticalSection(ics);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="mtb_xmc_ecat.c"/>
+  </compounddef>
+</doxygen>

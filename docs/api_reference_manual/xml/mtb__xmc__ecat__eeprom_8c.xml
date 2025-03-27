@@ -1,0 +1,337 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
+  <compounddef id="mtb__xmc__ecat__eeprom_8c" kind="file" language="C++">
+    <compoundname>mtb_xmc_ecat_eeprom.c</compoundname>
+    <includes refid="mtb__xmc__ecat_8h" local="yes">mtb_xmc_ecat.h</includes>
+    <includes local="yes">ecatslv.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>mtb_xmc_ecat_eeprom.c</label>
+        <link refid="mtb__xmc__ecat__eeprom_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ecatslv.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="mtb__xmc__ecat__eeprom_8c_1a45c4c718406ce6d915fce2cb2d419033" prot="public" static="no">
+        <name>EEPROM_READ_SIZE</name>
+        <initializer>(0x8U)</initializer>
+        <briefdescription>
+<para>EEPROM_READ_SIZE: Only required if EEPROM emulation is active. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This value defines the number of bytes which will be read per opertion. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat_eeprom.c" line="39" column="9" bodyfile="mtb_xmc_ecat_eeprom.c" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="mtb__xmc__ecat__eeprom_8c_1a126165f8fdc07254b80efd514f43f863" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t aEepromData[]</definition>
+        <argsstring>[]</argsstring>
+        <name>aEepromData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat_eeprom.c" line="51" column="16" declfile="mtb_xmc_ecat_eeprom.c" declline="51" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="variable" id="mtb__xmc__ecat__eeprom_8c_1a590806a679f751f8def013c02fa783a9" prot="public" static="no" mutable="no">
+        <type>UINT8 *</type>
+        <definition>UINT8* pEEPROM</definition>
+        <argsstring></argsstring>
+        <name>pEEPROM</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat_eeprom.c" line="52" column="15" declfile="mtb_xmc_ecat_eeprom.c" declline="52" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="variable" id="mtb__xmc__ecat__eeprom_8c_1a796a8cc3ccb297311f3ff48925dc0ebf" prot="public" static="yes" mutable="no">
+        <type>E_EEPROM_XMC4_t</type>
+        <definition>E_EEPROM_XMC4_t eeprom_context</definition>
+        <argsstring></argsstring>
+        <name>eeprom_context</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat_eeprom.c" line="55" column="24" bodyfile="mtb_xmc_ecat_eeprom.c" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__group__ecat__functions_1gaa06b6c4b719e6c8535aa1cd525af5217" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>E_EEPROM_XMC4_STATUS_t</type>
+        <definition>E_EEPROM_XMC4_STATUS_t mtb_xmc_ecat_eeprom_init</definition>
+        <argsstring>(void)</argsstring>
+        <name>mtb_xmc_ecat_eeprom_init</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="return"><para>E_EEPROM_XMC4_STATUS_t</para>
+</simplesect>
+<simplesect kind="par"><title>Description: </title><para>This function initializes an EEPROM for the EtherCAT. <linebreak/>
+ </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat_eeprom.c" line="60" column="24" bodyfile="mtb_xmc_ecat_eeprom.c" bodystart="60" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1gabf3c8c7637bd58f7543030f94033a537" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>__WEAK UINT16</type>
+        <definition>__WEAK UINT16 HW_EepromRead</definition>
+        <argsstring>(UINT32 wordaddr)</argsstring>
+        <name>HW_EepromRead</name>
+        <param>
+          <type>UINT32</type>
+          <declname>wordaddr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>wordaddr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>start word address within the EEPROM memory</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0, if the operation was successful.<linebreak/>
+ greater than 0, an error has occurred. <linebreak/>
+</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Copies EEPROM data to the ESC EEPROM data register. This is only required if EEPROM_EMULATION is enabled and no EEPROM content is created (CREATE_EEPROM_CONTENT== 0). This function shall copy EEPROM data to the ESC EEPROM data register (0x508:0x50F/0x50B).The EEPROM data starting at the specified word address and the length specified with &quot;EEPROM_READ_SIZE&quot;. The data shall be copied to the ESC EEPROM buffer (ESC offset 0x508). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat_eeprom.c" line="87" column="15" bodyfile="mtb_xmc_ecat_eeprom.c" bodystart="87" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1ga30b53dd5a74cc69be48690ef52aad451" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT16</type>
+        <definition>UINT16 HW_EepromWrite</definition>
+        <argsstring>(UINT32 wordaddr)</argsstring>
+        <name>HW_EepromWrite</name>
+        <param>
+          <type>UINT32</type>
+          <declname>wordaddr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>wordaddr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>start word address within the EEPROM memory</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0, if the operation was successful.<linebreak/>
+ greater than 0, an error has occurred. <linebreak/>
+</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Writes the EEPROM configuration information from ESC data register to EEPROM. This is only required if EEPROM_EMULATION is enabled and no EEPROM content is created (CREATE_EEPROM_CONTENT== 0). This function shall copy data from the ESC EEPROM data register (0x508:0x50F/0x50B).The EEPROM data starting at the specified word address and the length specified with &quot;EEPROM_WRITE_SIZE&quot;. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat_eeprom.c" line="97" column="8" bodyfile="mtb_xmc_ecat_eeprom.c" bodystart="97" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="group__group__ecat__functions_1ga549c3cd340478f3efc53d3e35fff5bd2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>UINT16</type>
+        <definition>UINT16 HW_EepromReload</definition>
+        <argsstring>(void)</argsstring>
+        <name>HW_EepromReload</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="par"><title>Parameters</title><para>None</para>
+</simplesect>
+<simplesect kind="return"><para>0, if the operation was successful.<linebreak/>
+ greater than 0, an error has occurred. <linebreak/>
+</para>
+</simplesect>
+<simplesect kind="par"><title>Description:</title><para>Reloads the EEPROM configuration information to ESC data registers. This is only required if EEPROM_EMULATION is enabled and no EEPROM content is created (CREATE_EEPROM_CONTENT== 0). This function shall copy the EEPROM reload information to the ESC EEPROM data register (0x508:0x50F/0x50B). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="mtb_xmc_ecat_eeprom.c" line="128" column="8" bodyfile="mtb_xmc_ecat_eeprom.c" bodystart="128" bodyend="165"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="version"><para>1.0.0 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">/*******************************************************************************</highlight></codeline>
+<codeline lineno="30"><highlight class="comment">*<sp/>HEADER<sp/>FILES</highlight></codeline>
+<codeline lineno="31"><highlight class="comment">*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;mtb_xmc_ecat.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ecatslv.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>EEPROM_READ_SIZE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EEPROM_READ_SIZE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(0x8U)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>ESC_EEPROM_SIZE<sp/>&gt;<sp/>MTB_XMC_ECAT_EEPROM_SIZE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>\</highlight></codeline>
+<codeline lineno="44"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>MTB_XMC_ECAT_EEPROM_SIZE<sp/>size<sp/>insufficient<sp/>to<sp/>hold<sp/>requested<sp/>ESC_EEPROM_SIZE<sp/>from<sp/>SSC<sp/>tool.<sp/>Check<sp/>size<sp/>in<sp/>the<sp/>ECAT<sp/>personality</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">/*******************************************************************************</highlight></codeline>
+<codeline lineno="48"><highlight class="comment">*<sp/>Global<sp/>variables</highlight></codeline>
+<codeline lineno="49"><highlight class="comment">*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Extern<sp/>declarations<sp/>for<sp/>Beckhoff<sp/>SSC<sp/>functions<sp/>and<sp/>variables<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint8_t<sp/>aEepromData[];</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>UINT8<sp/>*<sp/>pEEPROM;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>E_EEPROM_XMC4_t<sp/>eeprom_context;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">/*******************************************************************************</highlight></codeline>
+<codeline lineno="58"><highlight class="comment">*<sp/>APIs<sp/>Implementation</highlight></codeline>
+<codeline lineno="59"><highlight class="comment">*******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal">E_EEPROM_XMC4_STATUS_t<sp/><ref refid="group__group__ecat__functions_1gaa06b6c4b719e6c8535aa1cd525af5217" kindref="member">mtb_xmc_ecat_eeprom_init</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Initialize<sp/>the<sp/>Flash<sp/>Emulated<sp/>EEPROM<sp/>and<sp/>copy<sp/>the<sp/>latest<sp/>content<sp/>to<sp/>the<sp/>internal<sp/>working<sp/>RAM<sp/>buffer<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>E_EEPROM_XMC4_STATUS_t<sp/>e_status<sp/>=<sp/>E_EEPROM_XMC4_Init(&amp;eeprom_context,<sp/>MTB_XMC_ECAT_EEPROM_SIZE);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(e_status<sp/>==<sp/>E_EEPROM_XMC4_STATUS_OK)</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Check<sp/>if<sp/>the<sp/>slave<sp/>configuration<sp/>data<sp/>is<sp/>available<sp/>in<sp/>the<sp/>Flash<sp/>Emulated<sp/>EEPROM*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(E_EEPROM_XMC4_IsFlashEmpty())</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Prepare<sp/>the<sp/>default<sp/>configuration<sp/>out<sp/>of<sp/>the<sp/>SSC<sp/>for<sp/>EEPROM<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>E_EEPROM_XMC4_WriteArray(0U,<sp/>aEepromData,<sp/>(uint16_t)ESC_EEPROM_SIZE);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Program<sp/>the<sp/>RAM<sp/>contents<sp/>to<sp/>Emulated<sp/>EEPROM*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>e_status<sp/>=<sp/>E_EEPROM_XMC4_UpdateFlashContents();</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Read<sp/>the<sp/>latest<sp/>contents<sp/>from<sp/>RAM<sp/>buffer<sp/>which<sp/>has<sp/>the<sp/>latest<sp/>contents<sp/>of<sp/>EEPROM<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>E_EEPROM_XMC4_ReadArray(0U,<sp/>aEepromData,<sp/>(uint16_t)ESC_EEPROM_SIZE);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(e_status);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal">__WEAK<sp/>UINT16<sp/><ref refid="group__group__ecat__functions_1gabf3c8c7637bd58f7543030f94033a537" kindref="member">HW_EepromRead</ref>(UINT32<sp/>wordaddr)</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>This<sp/>function<sp/>is<sp/>only<sp/>required<sp/>if<sp/>EEPROM_EMULATION<sp/>is<sp/>enabled<sp/>and<sp/>no<sp/>EEPROM<sp/>content<sp/>is<sp/>created</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>(CREATE_EEPROM_CONTENT<sp/>==<sp/>0).<sp/>In<sp/>our<sp/>implementation<sp/>CREATE_EEPROM_CONTENT<sp/>==<sp/>1.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)wordaddr;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0U;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Beckhoff<sp/>Hw<sp/>abstraction<sp/>layer<sp/>interface<sp/>API<sp/>to<sp/>write<sp/>new<sp/>configuration<sp/>parameters<sp/>to<sp/>slave<sp/>EEPROM<sp/>area<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal">UINT16<sp/><ref refid="group__group__ecat__functions_1ga30b53dd5a74cc69be48690ef52aad451" kindref="member">HW_EepromWrite</ref>(UINT32<sp/>wordaddr)</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>status<sp/>=<sp/>0U;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/>EEPROMReg<sp/>=<sp/>0U;<sp/></highlight><highlight class="comment">/*<sp/>Regvalue<sp/>0x502<sp/>-<sp/>0x5003<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((wordaddr<sp/>&lt;=<sp/>(uint32_t)ESC_EEPROM_SIZE)<sp/>&amp;&amp;<sp/>(pEEPROM<sp/>!=<sp/>NULL))</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>*<sp/>pData<sp/>=<sp/>(uint16_t<sp/>*)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)pEEPROM;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__group__ecat__functions_1ga9f19b7a29451a2be5bc5ce1d03541d66" kindref="member">HW_EscRead</ref>((MEM_ADDR<sp/>*)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)&amp;pData[(wordaddr)],<sp/>(uint16_t)ESC_EEPROM_DATA_OFFSET,</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(uint16_t)EEPROM_WRITE_SIZE);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((wordaddr<sp/>==<sp/>(uint32_t)7U)<sp/>||<sp/>(wordaddr<sp/>==<sp/>(((uint32_t)ESC_EEPROM_SIZE<sp/>&gt;&gt;<sp/>(uint32_t)1U)<sp/>-<sp/>(uint32_t)1U)))</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>lets<sp/>program<sp/>the<sp/>complete<sp/>EEPROM<sp/>new<sp/>prepare<sp/>Data<sp/>for<sp/>EEPROM<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(E_EEPROM_XMC4_WriteArray((uint16_t)0U,<sp/>aEepromData,<sp/>(uint16_t)ESC_EEPROM_SIZE)<sp/>==<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__group__ecat__functions_1ga6a60cfacf47aa2e684a1f2fd64d90ea0" kindref="member">HW_EscReadWord</ref>(EEPROMReg,<sp/>ESC_EEPROM_CONTROL_OFFSET);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__group__ecat__functions_1gaea1240badcb123931fc033c9f604a208" kindref="member">HW_EscWriteWord</ref>(EEPROMReg<sp/>&amp;<sp/>(~ESC_EEPROM_BUSY_MASK),<sp/>ESC_EEPROM_CONTROL_OFFSET);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__disable_irq();</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Program<sp/>the<sp/>RAM<sp/>contents<sp/>to<sp/>Emulated<sp/>EEPROM*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/>(uint32_t)E_EEPROM_XMC4_UpdateFlashContents();</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__enable_irq();</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(UINT16)status;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Beckhoff<sp/>Hw<sp/>abstraction<sp/>layer<sp/>interface<sp/>API<sp/>to<sp/>reload<sp/>slave<sp/>EEPROM<sp/>area<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal">UINT16<sp/><ref refid="group__group__ecat__functions_1ga549c3cd340478f3efc53d3e35fff5bd2" kindref="member">HW_EepromReload</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT16<sp/>EEPROMReg<sp/>=<sp/>0U;<sp/></highlight><highlight class="comment">/*<sp/>Regvalue<sp/>0x502<sp/>-<sp/>0x5003<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT32<sp/>cmd<sp/>=<sp/>(uint32_t)EEPROMReg<sp/><sp/>&amp;<sp/>(uint32_t)ESC_EEPROM_CMD_MASK;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT32<sp/>addr;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__group__ecat__functions_1gad7f8ed3397c7d18204c7e2222d9e8f4f" kindref="member">HW_EscReadDWord</ref>(addr,<sp/>(uint32_t)ESC_EEPROM_ADDRESS_OFFSET);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>addr<sp/>=<sp/>SWAPDWORD(addr);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>EEPROM<sp/>emulation<sp/>(<sp/>8Bytes<sp/>EEPROM<sp/>data)<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((addr<sp/>&lt;=<sp/>(uint32_t)ESC_EEPROM_SIZE)<sp/>&amp;&amp;<sp/>(pEEPROM<sp/>!=<sp/>NULL))</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UINT16<sp/>*<sp/>pData<sp/>=<sp/>(UINT16<sp/>*)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)pEEPROM;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__group__ecat__functions_1ga5f83e4f9f7954113562fc90a6e190b56" kindref="member">HW_EscWrite</ref>((MEM_ADDR<sp/>*)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)&amp;pData[(addr)],<sp/>(uint16_t)ESC_EEPROM_DATA_OFFSET,</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(uint16_t)EEPROM_READ_SIZE);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Clear<sp/>error<sp/>bits<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EEPROMReg<sp/>&amp;=<sp/>(uint16_t)(~(uint16_t)(ESC_EEPROM_ERROR_MASK));</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>ack<sp/>current<sp/>reload<sp/>segment<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__group__ecat__functions_1gaea1240badcb123931fc033c9f604a208" kindref="member">HW_EscWriteWord</ref>(EEPROMReg,<sp/>(uint32_t)ESC_EEPROM_CONTROL_OFFSET);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>read<sp/>EEPROM<sp/>control<sp/>(to<sp/>check<sp/>if<sp/>the<sp/>reload<sp/>is<sp/>still<sp/>pending)<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__group__ecat__functions_1ga6a60cfacf47aa2e684a1f2fd64d90ea0" kindref="member">HW_EscReadWord</ref>(EEPROMReg,<sp/>ESC_EEPROM_CONTROL_OFFSET);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cmd<sp/>=<sp/>(uint32_t)EEPROMReg<sp/><sp/>&amp;<sp/>(uint32_t)ESC_EEPROM_CMD_MASK;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__group__ecat__functions_1gad7f8ed3397c7d18204c7e2222d9e8f4f" kindref="member">HW_EscReadDWord</ref>(addr,<sp/>(uint32_t)ESC_EEPROM_ADDRESS_OFFSET);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(cmd<sp/>==<sp/>(uint32_t)ESC_EEPROM_CMD_RELOAD_MASK);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Set<sp/>Error<sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EEPROMReg<sp/>|=<sp/>(uint16_t)ESC_EEPROM_ERROR_CMD_ACK;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0U;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="mtb_xmc_ecat_eeprom.c"/>
+  </compounddef>
+</doxygen>
