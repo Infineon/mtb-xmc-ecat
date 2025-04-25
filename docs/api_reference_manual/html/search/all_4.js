@@ -1,7 +1,7 @@
 var searchData=
 [
   ['macros_0',['Macros',['../group__group__ecat__macros.html',1,'']]],
-  ['mtb_20xmc_20ecat_20library_201_2e0_1',['MTB XMC ECAT Library 1.0',['../md_README_doxygen.html',1,'']]],
+  ['mtb_20xmc_20ecat_20library_201_2e1_2e0_1',['MTB XMC ECAT Library 1.1.0',['../md_README_doxygen.html',1,'']]],
   ['mtb_2dxmc_2decat_20for_20modustoolbox_20user_20guide_2',['MTB-XMC-ECAT for ModusToolbox User Guide',['../index.html',1,'']]],
   ['mtb_5fxmc_5fdisable_5fuser_5fint_3',['mtb_xmc_disable_user_int',['../group__group__ecat__functions.html#ga96efe3f2f7d04809de2c41dbe99b672e',1,'mtb_xmc_disable_user_int(void):&#160;mtb_xmc_ecat.c'],['../group__group__ecat__functions.html#ga96efe3f2f7d04809de2c41dbe99b672e',1,'mtb_xmc_disable_user_int(void):&#160;mtb_xmc_ecat.c']]],
   ['mtb_5fxmc_5fecat_5feeprom_5finit_4',['mtb_xmc_ecat_eeprom_init',['../group__group__ecat__functions.html#gaa06b6c4b719e6c8535aa1cd525af5217',1,'mtb_xmc_ecat_eeprom_init(void):&#160;mtb_xmc_ecat_eeprom.c'],['../group__group__ecat__functions.html#gaa06b6c4b719e6c8535aa1cd525af5217',1,'mtb_xmc_ecat_eeprom_init(void):&#160;mtb_xmc_ecat_eeprom.c']]],

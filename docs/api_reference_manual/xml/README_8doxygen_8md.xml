@@ -7,7 +7,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline><highlight class="normal">#<sp/>MTB<sp/>XMC<sp/>ECAT<sp/>Library<sp/>1.0</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>MTB<sp/>XMC<sp/>ECAT<sp/>Library<sp/>1.1.0</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">##<sp/>Overview</highlight></codeline>
 <codeline></codeline>
@@ -25,14 +25,12 @@
 <codeline></codeline>
 <codeline><highlight class="normal">##<sp/>Quick<sp/>Start</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">Refer<sp/>to<sp/>the<sp/>[API<sp/>Reference<sp/>Guide<sp/>Quick<sp/>Start<sp/>Guide](https://infineon.github.io/mtb-xmc-ecat/html/index.html)</highlight></codeline>
 <codeline><highlight class="normal">section<sp/>for<sp/>step-by-step<sp/>instruction<sp/>how<sp/>to<sp/>enable<sp/>the<sp/>MTB<sp/>XMC<sp/>ECAT<sp/>Library.</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">##<sp/>More<sp/>information</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">For<sp/>more<sp/>information,<sp/>refer<sp/>to<sp/>the<sp/>following<sp/>documents:</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">*<sp/>[MTB<sp/>XMC<sp/>ECAT<sp/>Library<sp/>API<sp/>Reference<sp/>Guide](https://infineon.github.io/mtb-xmc-ecat/html/index.html)</highlight></codeline>
 <codeline><highlight class="normal">*<sp/>[ModusToolbox<sp/>Software<sp/>Environment,<sp/>Quick<sp/>Start<sp/>Guide,<sp/>Documentation,<sp/>and<sp/>Videos](https://www.infineon.com/cms/en/design-support/tools/sdk/modustoolbox-software)</highlight></codeline>
 <codeline><highlight class="normal">*<sp/>[Infineon<sp/>Technologies<sp/>AG](https://www.infineon.com)</highlight></codeline>
 <codeline></codeline>

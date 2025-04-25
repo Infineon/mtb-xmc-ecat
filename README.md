@@ -1,4 +1,4 @@
-# MTB XMC ECAT Library 1.0
+# MTB XMC ECAT Library 1.1.0
 
 ## Overview
 
@@ -16,14 +16,14 @@ Slave Solution personality for the ModusToolbox&trade;.
 
 ## Quick Start
 
-Refer to the [API Reference Guide Quick Start Guide](https://infineon.github.io/mtb-xmc-ecat/html/index.html)
+Refer to the [API Reference Guide Quick Start Guide](https://infineon.github.io/mtb-xmc-ecat/api_reference_manual/html/index.html#section_quick_start)
 section for step-by-step instruction how to enable the MTB XMC ECAT Library.
 
 ## More information
 
 For more information, refer to the following documents:
 
-* [MTB XMC ECAT Library API Reference Guide](https://infineon.github.io/mtb-xmc-ecat/html/index.html)
+* [MTB XMC ECAT Library API Reference Guide](https://infineon.github.io/mtb-xmc-ecat/api_reference_manual/html/index.html)
 * [ModusToolbox Software Environment, Quick Start Guide, Documentation, and Videos](https://www.infineon.com/cms/en/design-support/tools/sdk/modustoolbox-software)
 * [Infineon Technologies AG](https://www.infineon.com)
 

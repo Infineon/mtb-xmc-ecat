@@ -1,6 +1,6 @@
 /**
  * @file mtb_xmc_ecat.c
- * \version 1.0.0
+ * \version 1.1.0
  *
  * @cond
  ********************************************************************************
@@ -86,8 +86,8 @@ UINT16 HW_Init(void)
     gpio_init_p0_rx_err();
     gpio_init_p0_tx_clk();
 
-    #if defined (MTB_XMC_ECAT_PORT1_ENABLED)
     gpio_init_p1_link_status();
+    #if defined (MTB_XMC_ECAT_PORT1_ENABLED)
     gpio_init_p1_rxd3();
     gpio_init_p1_rxd2();
     gpio_init_p1_rxd1();

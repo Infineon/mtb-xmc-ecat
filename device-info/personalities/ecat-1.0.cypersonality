@@ -58,7 +58,7 @@
 
     <!-- General Settings -->
     <ParamBool id="enable_reset" name="Enable Reset Request" group="General Settings" default="true" visible="true" editable="true" desc="HW abstraction layer interface API to reset the XMC ECAT module." />
-    <ParamBool id="enable_output_port" name="Enable Output Port" group="General Settings" default="true" visible="true" editable="false" desc="Enable output port." />
+    <ParamBool id="enable_output_port" name="Enable Output Port" group="General Settings" default="true" visible="true" editable="true" desc="Enable output port." />
     <ParamBool id="enable_PHY_interface" name="Enable PHY management interface" group="General Settings" default="true" visible="true" editable="true" desc="Enable PHY management interface." />
     <ParamRange id="phyaddr_offset" name="PHY address of port 0" group="General Settings" default="0" min="0" max="31" resolution="1" visible="true" editable="true" desc="Offset address to move the PHY address to any concecutive address range.(min = 0, max = 31)" />
 
@@ -72,7 +72,7 @@
     <ParamSignal port="led_err[0]" name="Enable LED_ERR pin" group="Connections" visible="`${hasVisibleOption(&quot;led_err[0]&quot;)}`" desc="ERR LED" canBeEmpty="false" />
     <ParamSignal port="led_run[0]" name="Enable LED_RUN pin" group="Connections" visible="`${hasVisibleOption(&quot;led_run[0]&quot;)}`" desc="RUN LED" canBeEmpty="false" />
     <ParamSignal port="led_link_act_p0[0]" name="Enable LED_LINK_ACT_P0 pin" group="Connections" visible="`${hasVisibleOption(&quot;led_link_act_p0[0]&quot;)}`" desc="Link/Activity state of port 0" canBeEmpty="false" />
-    <ParamSignal port="led_link_act_p1[0]" name="Enable LED_LINK_ACT_P1 pin" group="Connections" visible="`${enable_output_port &amp;&amp; hasVisibleOption(&quot;led_link_act_p1[0]&quot;)}`" desc="Link/Activity state of port 1" canBeEmpty="true" />
+    <ParamSignal port="led_link_act_p1[0]" name="Enable LED_LINK_ACT_P1 pin" group="Connections" visible="`${enable_output_port &amp;&amp; hasVisibleOption(&quot;led_link_act_p1[0]&quot;)}`" desc="Link/Activity state of port 1" canBeEmpty="`${!(enable_output_port &amp;&amp; hasVisibleOption(&quot;led_link_act_p1[0]&quot;))}`" />
 
     <ParamSignal port="sync0[0]" name="ECAT_SYNC0" group="Connections" visible="`${hasVisibleOption(&quot;sync0[0]&quot;)}`" desc="Sync 0 Signal" canBeEmpty="true" />
     <ParamString id="sync0_define" name="SYNC0 Define" default="`${getDefineNameFromSignal(getParamValue(&quot;sync0[0]&quot;))}`" visible="`${debug}`" editable="false" group="Connections" desc=""/>
@@ -114,9 +114,10 @@
       visible="false" />
 
     <!-- Internal -->
-    <Repeat count="2">
+      <ParamString templateId="xmc_ecat_port0" id="GROUP" default="`${getBlockDisplayName(INST_LOC,false)}` Configuration" editable="false" visible="false" group="" name="" desc=""/>
+
+      <Repeat count="2">
       <ParamString templateId="xmc_ecat_port$idx" id="GROUP" default="`${getBlockDisplayName(INST_LOC,false)}` Configuration" editable="false" visible="false" group="" name="" desc=""/>
-      
       <!-- Connections -->
       <ParamSignal templateId="xmc_ecat_port$idx" port="link[0]" name="ECAT_LINK" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;link[0]&quot;)}`" desc="Link status" canBeEmpty="false" >
       <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true">
@@ -125,69 +126,69 @@
         </Parameter>
       </Constraint>
       </ParamSignal>
-      <ParamSignal templateId="xmc_ecat_port$idx" port="rx_err[0]" name="ECAT_RX_ERR" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;rx_err[0]&quot;)}`" desc="Receive error line" canBeEmpty="false" >
+      <ParamSignal templateId="xmc_ecat_port$idx" port="rx_err[0]" name="ECAT_RX_ERR" group="`${GROUP}`/Connections" visible="`${(&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;rx_err[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;rx_err[0]&quot;)}`" desc="Receive error line" canBeEmpty="`${!((&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;rx_err[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;rx_err[0]&quot;))}`" >
       <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true">
         <Parameter id="io_function" severity="ERROR" reason="">
           <Fixed value="XMC_GPIO_INPUT" />
         </Parameter>
       </Constraint>
       </ParamSignal>
-      <ParamSignal templateId="xmc_ecat_port$idx" port="rx_dv[0]" name="ECAT_RX_DV" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;rx_dv[0]&quot;)}`" desc="Receive Data Valid" canBeEmpty="false" >
+      <ParamSignal templateId="xmc_ecat_port$idx" port="rx_dv[0]" name="ECAT_RX_DV" group="`${GROUP}`/Connections" visible="`${(&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;rx_dv[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;rx_dv[0]&quot;)}`" desc="Receive Data Valid" canBeEmpty="`${!((&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;rx_dv[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;rx_dv[0]&quot;))}`" >
       <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true">
         <Parameter id="io_function" severity="ERROR" reason="">
           <Fixed value="XMC_GPIO_INPUT" />
         </Parameter>
       </Constraint>
       </ParamSignal>
-      <ParamSignal templateId="xmc_ecat_port$idx" port="rx_clk[0]" name="ECAT_RX_CLK" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;rx_clk[0]&quot;)}`" desc="Receive clock line" canBeEmpty="false" >
+      <ParamSignal templateId="xmc_ecat_port$idx" port="rx_clk[0]" name="ECAT_RX_CLK" group="`${GROUP}`/Connections" visible="`${(&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;rx_clk[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;rx_clk[0]&quot;)}`" desc="Receive clock line" canBeEmpty="`${!((&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;rx_clk[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;rx_clk[0]&quot;))}`" >
       <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true">
         <Parameter id="io_function" severity="ERROR" reason="">
           <Fixed value="XMC_GPIO_INPUT" />
         </Parameter>
       </Constraint>
       </ParamSignal>
-      <ParamSignal templateId="xmc_ecat_port$idx" port="rxd0[0]" name="ECAT_RXD0" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;rxd0[0]&quot;)}`" desc="Receive Data Line 0" canBeEmpty="false" >
+      <ParamSignal templateId="xmc_ecat_port$idx" port="rxd0[0]" name="ECAT_RXD0" group="`${GROUP}`/Connections" visible="`${(&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;rxd0[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;rxd0[0]&quot;)}`" desc="Receive Data Line 0" canBeEmpty="`${!((&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;rxd0[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;rxd0[0]&quot;))}`" >
       <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true">
         <Parameter id="io_function" severity="ERROR" reason="">
           <Fixed value="XMC_GPIO_INPUT" />
         </Parameter>
       </Constraint>
       </ParamSignal>
-      <ParamSignal templateId="xmc_ecat_port$idx" port="rxd1[0]" name="ECAT_RXD1" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;rxd1[0]&quot;)}`" desc="Receive Data Line 1" canBeEmpty="false" >
+      <ParamSignal templateId="xmc_ecat_port$idx" port="rxd1[0]" name="ECAT_RXD1" group="`${GROUP}`/Connections" visible="`${(&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;rxd1[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;rxd1[0]&quot;)}`" desc="Receive Data Line 1" canBeEmpty="`${!((&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;rxd1[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;rxd1[0]&quot;))}`" >
       <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true">
         <Parameter id="io_function" severity="ERROR" reason="">
           <Fixed value="XMC_GPIO_INPUT" />
         </Parameter>
       </Constraint>
       </ParamSignal>
-      <ParamSignal templateId="xmc_ecat_port$idx" port="rxd2[0]" name="ECAT_RXD2" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;rxd2[0]&quot;)}`" desc="Receive Data Line 2" canBeEmpty="false" >
+      <ParamSignal templateId="xmc_ecat_port$idx" port="rxd2[0]" name="ECAT_RXD2" group="`${GROUP}`/Connections" visible="`${(&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;rxd2[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;rxd2[0]&quot;)}`" desc="Receive Data Line 2" canBeEmpty="`${!((&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;rxd2[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;rxd2[0]&quot;))}`" >
       <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true">
         <Parameter id="io_function" severity="ERROR" reason="">
           <Fixed value="XMC_GPIO_INPUT" />
         </Parameter>
       </Constraint>
       </ParamSignal>
-      <ParamSignal templateId="xmc_ecat_port$idx" port="rxd3[0]" name="ECAT_RXD3" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;rxd3[0]&quot;)}`" desc="Receive Data Line 3" canBeEmpty="false" >
+      <ParamSignal templateId="xmc_ecat_port$idx" port="rxd3[0]" name="ECAT_RXD3" group="`${GROUP}`/Connections" visible="`${(&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;rxd3[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;rxd3[0]&quot;)}`" desc="Receive Data Line 3" canBeEmpty="`${!((&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;rxd3[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;rxd3[0]&quot;))}`" >
       <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true">
         <Parameter id="io_function" severity="ERROR" reason="">
           <Fixed value="XMC_GPIO_INPUT" />
         </Parameter>
       </Constraint>
       </ParamSignal>
-      <ParamSignal templateId="xmc_ecat_port$idx" port="tx_clk[0]" name="ECAT_TX_CLK" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;tx_clk[0]&quot;)}`" desc="Transmit clock" canBeEmpty="false" >
+      <ParamSignal templateId="xmc_ecat_port$idx" port="tx_clk[0]" name="ECAT_TX_CLK" group="`${GROUP}`/Connections" visible="`${(&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;tx_clk[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;tx_clk[0]&quot;)}`" desc="Transmit clock" canBeEmpty="`${!((&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;tx_clk[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;tx_clk[0]&quot;))}`" >
       <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true">
         <Parameter id="io_function" severity="ERROR" reason="">
           <Fixed value="XMC_GPIO_INPUT" />
         </Parameter>
       </Constraint>
       </ParamSignal>
-      <ParamSignal templateId="xmc_ecat_port$idx" port="tx_ena[0]" name="ECAT_TX_ENA" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;tx_ena[0]&quot;)}`" desc="Transmit enable" canBeEmpty="false" />
-      <ParamSignal templateId="xmc_ecat_port$idx" port="txd0[0]" name="ECAT_TXD0" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;txd0[0]&quot;)}`" desc="Transmit Data Line 0" canBeEmpty="false" />
-      <ParamSignal templateId="xmc_ecat_port$idx" port="txd1[0]" name="ECAT_TXD1" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;txd1[0]&quot;)}`" desc="Transmit Data Line 1" canBeEmpty="false" />
-      <ParamSignal templateId="xmc_ecat_port$idx" port="txd2[0]" name="ECAT_TXD2" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;txd2[0]&quot;)}`" desc="Transmit Data Line 2" canBeEmpty="false" />
-      <ParamSignal templateId="xmc_ecat_port$idx" port="txd3[0]" name="ECAT_TXD3" group="`${GROUP}`/Connections" visible="`${hasVisibleOption(&quot;txd3[0]&quot;)}`" desc="Transmit Data Line 3" canBeEmpty="false" />
-
+      <ParamSignal templateId="xmc_ecat_port$idx" port="tx_ena[0]" name="ECAT_TX_ENA" group="`${GROUP}`/Connections" visible="`${(&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;tx_ena[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;tx_ena[0]&quot;)}`" desc="Transmit enable" canBeEmpty="`${!((&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;tx_ena[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;tx_ena[0]&quot;))}`" />
+      <ParamSignal templateId="xmc_ecat_port$idx" port="txd0[0]" name="ECAT_TXD0" group="`${GROUP}`/Connections" visible="`${(&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;txd0[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;txd0[0]&quot;)}`" desc="Transmit Data Line 0" canBeEmpty="`${!((&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;txd0[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;txd0[0]&quot;))}`" />
+      <ParamSignal templateId="xmc_ecat_port$idx" port="txd1[0]" name="ECAT_TXD1" group="`${GROUP}`/Connections" visible="`${(&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;txd1[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;txd1[0]&quot;)}`" desc="Transmit Data Line 1" canBeEmpty="`${!((&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;txd1[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;txd1[0]&quot;))}`" />
+      <ParamSignal templateId="xmc_ecat_port$idx" port="txd2[0]" name="ECAT_TXD2" group="`${GROUP}`/Connections" visible="`${(&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;txd2[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;txd2[0]&quot;)}`" desc="Transmit Data Line 2" canBeEmpty="`${!((&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;txd2[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;txd2[0]&quot;))}`" />
+      <ParamSignal templateId="xmc_ecat_port$idx" port="txd3[0]" name="ECAT_TXD3" group="`${GROUP}`/Connections" visible="`${(&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;txd3[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;txd3[0]&quot;)}`" desc="Transmit Data Line 3" canBeEmpty="`${!((&quot;$idx&quot; eq 1) ? (hasVisibleOption(&quot;txd3[0]&quot;) &amp;&amp; (getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;))) : hasVisibleOption(&quot;txd3[0]&quot;))}`" />
     </Repeat>
+
     <!-- Network Interface -->
       <ParamChoice templateId="xmc_ecat_port0" id="tx_shift" name="TX Shift Port 0" group="`${GROUP}`/Network Interface" default="XMC_ECAT_PORT0_CTRL_TX_SHIFT_0NS" visible="true" editable="true" desc="TX signal delay for port 0.">
         <Entry name="0ns" value="XMC_ECAT_PORT0_CTRL_TX_SHIFT_0NS" visible="true" />
@@ -196,7 +197,7 @@
         <Entry name="30ns" value="XMC_ECAT_PORT0_CTRL_TX_SHIFT_30NS" visible="true" />
       </ParamChoice>
 
-      <ParamChoice templateId="xmc_ecat_port1" id="tx_shift" name="TX Shift Port 1" group="`${GROUP}`/Network Interface" default="XMC_ECAT_PORT1_CTRL_TX_SHIFT_0NS" visible="`${&quot;enable_output_port&quot;}`" editable="true" desc="TX signal delay for port 1.">
+      <ParamChoice templateId="xmc_ecat_port1" id="tx_shift" name="TX Shift Port 1" group="`${GROUP}`/Network Interface" default="XMC_ECAT_PORT1_CTRL_TX_SHIFT_0NS" visible="`${getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;)}`" editable="true" desc="TX signal delay for port 1.">
         <Entry name="0ns" value="XMC_ECAT_PORT1_CTRL_TX_SHIFT_0NS" visible="true" />
         <Entry name="10ns" value="XMC_ECAT_PORT1_CTRL_TX_SHIFT_10NS" visible="true" />
         <Entry name="20ns" value="XMC_ECAT_PORT1_CTRL_TX_SHIFT_20NS" visible="true" />
@@ -229,7 +230,7 @@
     <ConfigDefine name="MTB_XMC_ECAT_IRQN" value="ECAT0_0_IRQn" public="true" include="true" />
     <ConfigDefine name="MTB_XMC_ECAT_IRQN_PRIORITY" value="`${ecat_irqn_priority}`" public="true" include="true" />
     <ConfigDefine name="MTB_XMC_ECAT_EEPROM_SIZE" value="`${ecat_eeprom_size}`" public="true" include="true" />
-    <ConfigDefine name="MTB_XMC_ECAT_PORT1_ENABLED" value="1" public="true" include="`${ecat_port1_enabled}`" />
+    <ConfigDefine name="MTB_XMC_ECAT_PORT1_ENABLED" value="1" public="true" include="`${enable_output_port}`" />
     <ConfigStruct name="MTB_XMC_ECAT_port_control" type="XMC_ECAT_PORT_CTRL_t" const="`${inFlash}`" public="true" include="`${($idx eq 0) ? ecat_port0_enabled : ecat_port1_enabled}`" >
       <ConfigStruct name="common" type="nested" const="`${inFlash}`" public="true" include="true" >
         <Member name="enable_rstreq" value="`${enable_reset ? true : false}`"/>
@@ -251,15 +252,15 @@
         <Member name="tx_shift" value="`${getExposedMember(&quot;ecat[0].port[0]&quot;, &quot;tx_shift&quot;)}`" include="`${ecat_port0_enabled}`" />
       </ConfigStruct>
       <ConfigStruct name="port1" type="nested" const="`${inFlash}`" public="true" include="true" >
-        <Member name="link" value="`${ecat_port1_enabled ? &quot;ECAT_PORT1_CTRL_LINK&quot; : &quot;XMC_ECAT_PORT1_CTRL_LINK_GND&quot;}`" include="true" />
-        <Member name="rx_err" value="`${ecat_port1_enabled ? &quot;ECAT_PORT1_CTRL_RX_ERR&quot; : &quot;XMC_ECAT_PORT1_CTRL_RX_ERR_GND&quot;}`" include="true" />
-        <Member name="rx_dv" value="`${ecat_port1_enabled ? &quot;ECAT_PORT1_CTRL_RX_DV&quot; : &quot;XMC_ECAT_PORT1_CTRL_RX_DV_GND&quot;}`" include="true" />
-        <Member name="rx_clk" value="`${ecat_port1_enabled ? &quot;ECAT_PORT1_CTRL_RX_CLK&quot; : &quot;XMC_ECAT_PORT1_CTRL_RX_CLK_GND&quot;}`" include="true" />
-        <Member name="rxd0" value="`${ecat_port1_enabled ? &quot;ECAT_PORT1_CTRL_RXD0&quot; : &quot;XMC_ECAT_PORT1_CTRL_RXD0_GND&quot;}`" include="true" />
-        <Member name="rxd1" value="`${ecat_port1_enabled ? &quot;ECAT_PORT1_CTRL_RXD1&quot; : &quot;XMC_ECAT_PORT1_CTRL_RXD1_GND&quot;}`" include="true" />
-        <Member name="rxd2" value="`${ecat_port1_enabled ? &quot;ECAT_PORT1_CTRL_RXD2&quot; : &quot;XMC_ECAT_PORT1_CTRL_RXD2_GND&quot;}`" include="true" />
-        <Member name="rxd3" value="`${ecat_port1_enabled ? &quot;ECAT_PORT1_CTRL_RXD3&quot; : &quot;XMC_ECAT_PORT1_CTRL_RXD3_GND&quot;}`" include="true" />
-        <Member name="tx_clk" value="`${ecat_port1_enabled ? &quot;ECAT_PORT1_CTRL_TX_CLK&quot; : &quot;XMC_ECAT_PORT1_CTRL_TX_CLK_GND&quot;}`" include="true" />
+        <Member name="link" value="`${&quot;ECAT_PORT1_CTRL_LINK&quot;}`" include="true" />
+        <Member name="rx_err" value="`${enable_output_port ? &quot;ECAT_PORT1_CTRL_RX_ERR&quot; : &quot;XMC_ECAT_PORT1_CTRL_RX_ERR_GND&quot;}`" include="true" />
+        <Member name="rx_dv" value="`${enable_output_port ? &quot;ECAT_PORT1_CTRL_RX_DV&quot; : &quot;XMC_ECAT_PORT1_CTRL_RX_DV_GND&quot;}`" include="true" />
+        <Member name="rx_clk" value="`${enable_output_port ? &quot;ECAT_PORT1_CTRL_RX_CLK&quot; : &quot;XMC_ECAT_PORT1_CTRL_RX_CLK_GND&quot;}`" include="true" />
+        <Member name="rxd0" value="`${enable_output_port ? &quot;ECAT_PORT1_CTRL_RXD0&quot; : &quot;XMC_ECAT_PORT1_CTRL_RXD0_GND&quot;}`" include="true" />
+        <Member name="rxd1" value="`${enable_output_port ? &quot;ECAT_PORT1_CTRL_RXD1&quot; : &quot;XMC_ECAT_PORT1_CTRL_RXD1_GND&quot;}`" include="true" />
+        <Member name="rxd2" value="`${enable_output_port ? &quot;ECAT_PORT1_CTRL_RXD2&quot; : &quot;XMC_ECAT_PORT1_CTRL_RXD2_GND&quot;}`" include="true" />
+        <Member name="rxd3" value="`${enable_output_port ? &quot;ECAT_PORT1_CTRL_RXD3&quot; : &quot;XMC_ECAT_PORT1_CTRL_RXD3_GND&quot;}`" include="true" />
+        <Member name="tx_clk" value="`${enable_output_port ? &quot;ECAT_PORT1_CTRL_TX_CLK&quot; : &quot;XMC_ECAT_PORT1_CTRL_TX_CLK_GND&quot;}`" include="true" />
         <Member name="tx_shift" value="`${getExposedMember(&quot;ecat[0].port[1]&quot;, &quot;tx_shift&quot;)}`" include="`${ecat_port1_enabled}`" />
       </ConfigStruct>
     </ConfigStruct>
@@ -342,7 +343,7 @@
     </ConfigFirmware>
   </PersonalityTemplate>
 
-  <PersonalityTemplate id="xmc_ecat_port1" valid="`${getParamValue(&quot;xmc_ecat&quot;, &quot;enable_output_port&quot;)}`" >
+  <PersonalityTemplate id="xmc_ecat_port1" >
     <FittingRules>
       <MappingRules>
         <IpBlock name="xmc_ecat" />
@@ -363,7 +364,7 @@
     <DRCs/>
 
     <ConfigFirmware>
-    <ConfigFunction signature="void gpio_init_p1_link_status(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;link[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;link[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;link[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;link[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;link[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;link[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="`${getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;)}`" />
+    <ConfigFunction signature="void gpio_init_p1_link_status(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;link[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;link[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;link[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;link[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;link[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;link[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="true" />
 
     <ConfigFunction signature="void gpio_init_p1_rxd3(void)" body="XMC_GPIO_Init(`${getExposedMember(getBlockFromSignal(&quot;rxd3[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rxd3[0]&quot;), &quot;InstName&quot;)}`_PIN, &amp;`${getExposedMember(getBlockFromSignal(&quot;rxd3[0]&quot;), &quot;InstName&quot;)}`_config);&#xA;    XMC_GPIO_SetHardwareControl(`${getExposedMember(getBlockFromSignal(&quot;rxd3[0]&quot;), &quot;InstName&quot;)}`_PORT, `${getExposedMember(getBlockFromSignal(&quot;rxd3[0]&quot;), &quot;InstName&quot;)}`_PIN, `${getExposedMember(getBlockFromSignal(&quot;rxd3[0]&quot;), &quot;InstName&quot;)}`_HWO);&#xA;" public="true" include="`${getExposedMember(&quot;ecat[0]&quot;, &quot;enable_output_port&quot;)}`" />
 

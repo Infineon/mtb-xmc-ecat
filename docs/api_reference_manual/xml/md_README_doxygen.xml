@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.2" xml:lang="en-US">
   <compounddef id="md_README_doxygen" kind="page">
     <compoundname>md_README_doxygen</compoundname>
-    <title>MTB XMC ECAT Library 1.0</title>
+    <title>MTB XMC ECAT Library 1.1.0</title>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -21,14 +21,13 @@
 </sect1>
 <sect1 id="md_README_doxygen_1autotoc_md3">
 <title>Quick Start</title>
-<para>Refer to the <ulink url="https://infineon.github.io/mtb-xmc-ecat/html/index.html">API Reference Guide Quick Start Guide</ulink> section for step-by-step instruction how to enable the MTB XMC ECAT Library.</para>
+<para>section for step-by-step instruction how to enable the MTB XMC ECAT Library.</para>
 </sect1>
 <sect1 id="md_README_doxygen_1autotoc_md4">
 <title>More information</title>
 <para>For more information, refer to the following documents:</para>
 <para><itemizedlist>
-<listitem><para><ulink url="https://infineon.github.io/mtb-xmc-ecat/html/index.html">MTB XMC ECAT Library API Reference Guide</ulink></para>
-</listitem><listitem><para><ulink url="https://www.infineon.com/cms/en/design-support/tools/sdk/modustoolbox-software">ModusToolbox Software Environment, Quick Start Guide, Documentation, and Videos</ulink></para>
+<listitem><para><ulink url="https://www.infineon.com/cms/en/design-support/tools/sdk/modustoolbox-software">ModusToolbox Software Environment, Quick Start Guide, Documentation, and Videos</ulink></para>
 </listitem><listitem><para><ulink url="https://www.infineon.com">Infineon Technologies AG</ulink></para>
 </listitem></itemizedlist>
 </para>

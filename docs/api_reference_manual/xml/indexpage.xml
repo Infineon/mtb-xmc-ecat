@@ -259,6 +259,8 @@
 </listitem></orderedlist>
 </para>
 </simplesect>
+<simplesect kind="note"><para>If you initialize only IN Port for ECAT and realize your own implementation of <ref refid="group__group__ecat__functions_1ga8e87560251ba1d0b3ab4f410c94b8190" kindref="member">HW_Init()</ref> function, you still need to use gpio_init_p1_link_status() function.</para>
+</simplesect>
 <bold>ECAT_TIMER_INT usage</bold></para>
 <para>In the code, check is used if the ECAT_TIMER_INT define is set to 1. (The ECAT_TIMER_INT define is already set to 1 in the SSC_Config file, you can find it in the export folder. Also, you can change its value.) The code inside this condition executes and we call the ECAT_CheckTimer() function. If the switch ECAT_TIMER_INT is 0, the watchdog control is implemented without using interrupts. So, use the <ref refid="group__group__ecat__functions_1gafd2e227187852d4c570a293358ffcf60" kindref="member">HW_GetTimer()</ref> function.</para>
 <para><simplesect kind="note"><para>1. The Middleware outputs a log using the XMC_ASSERT() function.</para>
@@ -278,10 +280,15 @@
 </sect1>
 <sect1 id="index_1section_mtb_xmc_ecat_changelog">
 <title>Changelog</title>
-<para><table rows="2" cols="3"><row>
+<para><table rows="3" cols="3"><row>
 <entry thead="yes"><para>Version</para>
 </entry><entry thead="yes"><para>Changes</para>
 </entry><entry thead="yes"><para>Reason for Change </para>
+</entry></row>
+<row>
+<entry thead="no"><para>1.1.0 </para>
+</entry><entry thead="no"><para>Added an ability to disable an output port. </para>
+</entry><entry thead="no"><para>It was not possible to configure the ECAT only for the IN port.  </para>
 </entry></row>
 <row>
 <entry thead="no"><para>1.0.0 </para>
